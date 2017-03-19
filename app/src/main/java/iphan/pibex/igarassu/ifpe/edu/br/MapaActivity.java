@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
+import static iphan.pibex.igarassu.ifpe.edu.br.R.id.tv_titulo;
+
 
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -49,20 +51,21 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         populateLocations();
 
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
-        Button button_vejamais = (Button) markerView.findViewById(R.id.button_vejamais);
-        button_vejamais.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Button button = (Button) view;
-                //((Button) view).setText("clicked");
-                // buscar a location
-                // criar a nova activity
-                // setar a location
-                // fazer a intent ir para a nova activity
-                Log.d("DEBUG", "View Clicked");
 
-            }
-        });
+//        Button button_vejamais = (Button) markerView.findViewById(R.id.button_vejamais);
+//        button_vejamais.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Button button = (Button) view;
+////                ((Button) view).setText("clicked");
+//                // buscar a location
+//                // criar a nova activity
+//                // setar a location
+//                // fazer a intent ir para a nova activity
+//                Log.d("DEBUG", "View Clicked");
+//
+//            }
+//        });
 
     }
 
@@ -83,6 +86,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         this.mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
+
+                Intent intent = new Intent(MapaActivity.this, VejaMais.class);
+
+//                intent.putExtra();
+
+                startActivity(intent);
+
                 Log.d("DEBUG", "Info View Clicked");
             }
         });
@@ -109,7 +119,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                     TextView tvLat = (TextView) markerView.findViewById(R.id.tv_lat);
                     TextView tvLng = (TextView) markerView.findViewById(R.id.tv_lng);
                     TextView tvSnippet = (TextView) markerView.findViewById(R.id.tv_snippet);
-                    Button button_vejamais = (Button) markerView.findViewById(R.id.button_vejamais);
 
                     LatLng location = marker.getPosition();
                     tvLocality.setText(marker.getTitle());
