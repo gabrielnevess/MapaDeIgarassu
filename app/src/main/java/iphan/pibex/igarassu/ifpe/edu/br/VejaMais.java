@@ -21,7 +21,7 @@ public class VejaMais extends FragmentActivity {
 
         CustomApplication application = (CustomApplication) getApplication();
 
-        this.location = application.getLocation()[index];
+        this.location = application.getLocations()[index];
 
         TextView tv_titulo = (TextView) findViewById(R.id.tv_titulo);
         tv_titulo.setText(this.location.getName());
