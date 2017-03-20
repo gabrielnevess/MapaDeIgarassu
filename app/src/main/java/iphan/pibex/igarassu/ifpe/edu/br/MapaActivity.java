@@ -1,30 +1,21 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.HashMap;
-import java.util.logging.Logger;
-
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
-import static iphan.pibex.igarassu.ifpe.edu.br.R.id.tv_titulo;
 
 
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -87,13 +78,23 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
 
+                String name = marker.getTitle();
+
+                int i;
+                for(i = 0; i < locations.length; i++){
+                    if(name.equals(locations[i].getName())){
+                        break;
+                    }
+                }
+
                 Intent intent = new Intent(MapaActivity.this, VejaMais.class);
-
-//                intent.putExtra();
-
+                Bundle b = new Bundle();
+                b.putInt("id", i);
+                intent.putExtras(b);
                 startActivity(intent);
+                finish();
 
-                Log.d("DEBUG", "Info View Clicked");
+//                Log.d("DEBUG", "Info View Clicked");
             }
         });
 
