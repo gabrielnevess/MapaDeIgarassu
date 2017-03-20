@@ -26,6 +26,9 @@ public class VejaMais extends FragmentActivity {
         TextView tv_titulo = (TextView) findViewById(R.id.tv_titulo);
         tv_titulo.setText(this.location.getName());
 
+//        TextView tv_endereco = (TextView) findViewById(R.id.tv_endereco);
+//        tv_endereco.setText(this.location.getEndereco());
+
     }
 
 
