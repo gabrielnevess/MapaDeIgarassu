@@ -3,7 +3,6 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,44 +21,21 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private View markerView;
-//    private HashMap<Marker, Location> locationMap;
-
-//    private Location search(String title) {
-//        return null;
-//    }
+    private CustomApplication application;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-//        this.locationMap = new HashMap<>();
 
-        CustomApplication application = (CustomApplication) getApplication();
+        application = (CustomApplication) getApplication();
         application.populateLocations();
 
-//        populateMap();
-
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
-
-//        Button button_vejamais = (Button) markerView.findViewById(R.id.button_vejamais);
-//        button_vejamais.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Button button = (Button) view;
-////                ((Button) view).setText("clicked");
-//                // buscar a location
-//                // criar a nova activity
-//                // setar a location
-//                // fazer a intent ir para a nova activity
-//                Log.d("DEBUG", "View Clicked");
-//
-//            }
-//        });
-
     }
 
 
@@ -80,8 +56,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                CustomApplication application = (CustomApplication) getApplication();
-
                 String name = marker.getTitle();
 
                 int i;
@@ -96,17 +70,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 b.putInt("id", i);
                 intent.putExtras(b);
                 startActivity(intent);
-//                finish();
 
-//                Log.d("DEBUG", "Info View Clicked");
             }
         });
 
     }
 
     private void infoWindow() {
-
-//        final MapaActivity activity = this;
 
         if (mMap != null) {
             this.mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -118,7 +88,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
                 @Override
                 public View getInfoContents(Marker marker) {
-                    //View v = getLayoutInflater().inflate(R.layout.marker_view, null);
 
                     TextView tvLocality = (TextView) markerView.findViewById(R.id.tv_locality);
                     TextView tvLat = (TextView) markerView.findViewById(R.id.tv_lat);
@@ -131,10 +100,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                     tvLng.setText("Longitude: " + location.longitude);
                     tvSnippet.setText(marker.getTitle());
 
-
-//                    MarkerView v = new MarkerView(activity, null);
-//                    v.setLocation(locations[0]);
-                    Log.d("DEBUG", "Info View");
                     return markerView;
                 }
             });
@@ -144,11 +109,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void populateMap() {
 
-        CustomApplication application = (CustomApplication) getApplication();
-
         for (Location l : application.getLocations()) {
             LatLng location = new LatLng(l.getLongitude(), l.getLatitude());
-            //this.mMap.addMarker(new MarkerOptions().position(location).title(l.getName()));
 
             MarkerOptions options = new MarkerOptions()
                     //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
@@ -160,23 +122,8 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
     }
-
-
-//    private void populateMap() {
-//        for (Location l : locations) {
-//            LatLng location = new LatLng(l.getLatitude(), l.getLongitude());
-//            // by adsl
-//            MarkerOptions markerOptions = new MarkerOptions().position(location).title(l.getName());
-//            Marker marker = this.mMap.addMarker(markerOptions);
-//            this.locationMap.put(marker, l);
-//        }
-//    }
-
-
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Log.d("DEBUG", "Clicked");
-
         return false;
     }
 }

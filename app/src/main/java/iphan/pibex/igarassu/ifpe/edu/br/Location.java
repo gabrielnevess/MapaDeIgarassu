@@ -6,14 +6,15 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 
 class Location {
     private String name;
-
     private Double longitude;
     private Double latitude;
+    private String endereco;
 
-    public Location(String name, Double longitude, Double latitude) {
+    public Location(String name, Double longitude, Double latitude, String endereco) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.endereco = endereco;
     }
 
     public String getName() {
@@ -40,14 +41,11 @@ class Location {
         this.latitude = latitude;
     }
 
-//    public String getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(String endereco) {
-//        this.endereco = endereco;
-//    }
+    public String getEndereco() {
+        return endereco;
+    }
 
-
-
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }

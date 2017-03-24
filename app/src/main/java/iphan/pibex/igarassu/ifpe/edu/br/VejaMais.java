@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class VejaMais extends FragmentActivity {
 
     private Location location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,8 @@ public class VejaMais extends FragmentActivity {
         TextView tv_titulo = (TextView) findViewById(R.id.tv_titulo);
         tv_titulo.setText(this.location.getName());
 
-//        TextView tv_endereco = (TextView) findViewById(R.id.tv_endereco);
-//        tv_endereco.setText(this.location.getEndereco());
+        TextView tv_endereco = (TextView) findViewById(R.id.tv_endereco);
+        tv_endereco.setText("Endereço: " + this.location.getEndereco());
 
     }
 
