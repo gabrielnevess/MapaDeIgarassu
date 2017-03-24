@@ -2,8 +2,10 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,11 +19,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
-public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private GoogleMap mMap;
     private View markerView;
     private CustomApplication application;
+    private FloatingActionButton aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,24 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
+
         application = (CustomApplication) getApplication();
         application.populateLocations();
 
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
+
+        onClick();
+    }
+
+    private void onClick() {
+        aboutMe = (FloatingActionButton) findViewById(R.id.aboutMe);
+        aboutMe.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sobre = new Intent(MapaActivity.this, Sobre.class);
+                startActivity(sobre);
+            }
+        });
     }
 
 
@@ -73,6 +90,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+
 
     }
 
@@ -122,6 +140,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
     }
+
     @Override
     public boolean onMarkerClick(Marker marker) {
         return false;
