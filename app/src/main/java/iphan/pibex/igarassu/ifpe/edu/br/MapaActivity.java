@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -42,6 +42,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
 
         onClick();
+
     }
 
     private void onClick() {
@@ -54,7 +55,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
 
     private static final LatLng CENTER_LOCATION = new LatLng(-7.834195, -34.906142);
 
@@ -124,14 +124,13 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-
     private void populateMap() {
 
         for (Location l : application.getLocations()) {
             LatLng location = new LatLng(l.getLongitude(), l.getLatitude());
 
             MarkerOptions options = new MarkerOptions()
-                    //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marcador_mapa))
                     .title(l.getName())
                     .position(location);
             this.mMap.addMarker(options);
@@ -145,4 +144,5 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMarkerClick(Marker marker) {
         return false;
     }
+
 }
