@@ -1,7 +1,9 @@
 # Mapa de Igarassu - Versão Mobile
 
 
-# PROJETO DE EXTENSÃO - MAPA E JOGO DA MEMÓRIA DO PATRIMÔNIO DE IGARASSU
+
+# Projeto de Extensão PIBEX - Mapa e Jogo da Memória do Patrimônio de Igarassu
+
 
 
 # Introdução
@@ -33,7 +35,7 @@ Você poderá ajudar no projeto, reportando erros, bugs ou sugestões de novas f
 Contato: Gabriel Silva (gabriel-silva_2011@hotmail.com) / Gabriel Lima (mugiwara.gl@gmail.com) 
  
 
-# Projeto Financiado
+# Financiador
 
 Este projeto é financiado pelo PIBEX Técnico/IFPE, desde Fevereiro de 2017 e têm contado com a constante colaboração do IPHAN representado pela casa do patrimônio de Igarassu.
 
