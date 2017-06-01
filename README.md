@@ -1,4 +1,4 @@
-# MapaDeIgarassu - Versão Mobile
+# Mapa de Igarassu - Versão Mobile
 
 # Introdução
   Este projeto nasceu da dificuldade que Casa do Patrimônio IPHAN possui em divulgar e preservar o patrimônio de Igarassu. Ao longo dos anos o IPHAN vem produzindo artefatos gráficos como o catálogo Preservar Igarassu (IPHAN, 2011). Atualmente estes artefatos são distribuídos às pessoas que por ventura visitam a Casa do Patrimônio do IPHAN em Igarassu que acaba por restringir o acesso por meio da população.
