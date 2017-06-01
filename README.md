@@ -1,10 +1,18 @@
 # MapaDeIgarassu - Versão Mobile
 
+# Introdução
+  Este projeto nasceu da dificuldade que Casa do Patrimônio IPHAN possui em divulgar e preservar o patrimônio de Igarassu. Ao longo dos anos o IPHAN vem produzindo artefatos gráficos como o catálogo Preservar Igarassu (IPHAN, 2011). Atualmente estes artefatos são distribuídos às pessoas que por ventura visitam a Casa do Patrimônio do IPHAN em Igarassu que acaba por restringir o acesso por meio da população.
+Assim, visando prover patrimônio de Igarassu através através da democratização do acesso ao material produzido pela equipe técnicas o IPHAN, os aplicativos Mapa Cultural de Igarassu foi idealizado.
+ A aplicação Mapa de Igarassu tem como objetivo principal atender às pessoas/instituições que têm interesse em conhecer e/ou obter mais informações sobre os principais pontos turístico de Igarassu utilizando a internet.
+ 
+# Contato
+ 
+O Mapa de Igarassu é Desenvolvido por Gabriel Lima(mugiwara.gl@gmail.com) e Gabriel Silva(gabriel-silva_2011@hotmail.com).
+ 
+ 
+# Licença MIT
+ 
+O Mapa de Igarassu é lançado sob a Licença MTI, que pode ser encontrada no arquivo LICENSE na raiz deste projeto.
+ 
+ 
 
-Copyright 2017 COPYRIGHT IFPE
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
