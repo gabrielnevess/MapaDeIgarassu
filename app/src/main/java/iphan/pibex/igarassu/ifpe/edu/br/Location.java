@@ -1,10 +1,6 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
-/**
- * Created by Gabriel Neves on 19/03/2017.
- */
-
-class Location {
+public class Location {
     private String name;
     private Double longitude;
     private Double latitude;

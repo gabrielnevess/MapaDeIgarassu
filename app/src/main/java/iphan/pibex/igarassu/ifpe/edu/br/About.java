@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class Sobre extends FragmentActivity {
+import iphan.pibex.igarassu.ifpe.edu.br.R;
+
+public class About extends FragmentActivity {
 
     TextView text;
 

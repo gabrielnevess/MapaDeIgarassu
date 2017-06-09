@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
-public class MapaActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private View markerView;
@@ -51,7 +51,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         aboutMe.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sobre = new Intent(MapaActivity.this, Sobre.class);
+                Intent sobre = new Intent(MapActivity.this, About.class);
                 startActivity(sobre);
             }
         });
@@ -83,7 +83,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
 
-                Intent intent = new Intent(MapaActivity.this, VejaMais.class);
+                Intent intent = new Intent(MapActivity.this, SeeMore.class);
                 Bundle b = new Bundle();
                 b.putInt("id", i);
                 intent.putExtras(b);

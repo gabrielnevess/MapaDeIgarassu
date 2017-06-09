@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "293528435918",
+    "firebase_url": "https://mapadeigarassu.firebaseio.com",
+    "project_id": "mapadeigarassu",
+    "storage_bucket": "mapadeigarassu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293528435918:android:720b745a3a56a9d4",
+        "android_client_info": {
+          "package_name": "iphan.pibex.igarassu.ifpe.edu.br"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293528435918-it29h1dpodnbe99ilupl6l03bovuv053.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "iphan.pibex.igarassu.ifpe.edu.br",
+            "certificate_hash": "adebb997de35a3d2490a4d1a687d25ed59c622ec"
+          }
+        },
+        {
+          "client_id": "293528435918-7suv9k87b3fdf6ps9kenvec24kr60bq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_TiaBJh5zDUIoJ2kBo3lKOARGWJpU8BA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293528435918-7suv9k87b3fdf6ps9kenvec24kr60bq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

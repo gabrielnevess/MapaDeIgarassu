@@ -28,7 +28,7 @@ public class SplashScreen extends Activity implements Runnable {
 
     @Override
     public void run() {
-        Intent intent = new Intent(SplashScreen.this, MapaActivity.class);
+        Intent intent = new Intent(SplashScreen.this, MapActivity.class);
         startActivity(intent);
         finish();
     }

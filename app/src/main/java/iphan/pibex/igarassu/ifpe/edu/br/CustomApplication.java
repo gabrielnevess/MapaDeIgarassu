@@ -1,12 +1,9 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
 import android.app.Application;
+import iphan.pibex.igarassu.ifpe.edu.br.Database.DataBase;
 
-/**
- * Created by AlunoIFPE on 20/03/2017.
- */
-
-public class CustomApplication extends Application{
+public class CustomApplication extends Application {
     private Location[] locations;
 
     public Location[] getLocations() {
@@ -84,9 +81,12 @@ public class CustomApplication extends Application{
         };
 
         this.locations = new Location[rawData.length];
+        DataBase dataBase = new DataBase(this);
 
         for (int i = 0; i < rawData.length; i++) {
             locations[i] = new Location((String) rawData[i][0], (Double) rawData[i][1], (Double) rawData[i][2], (String) rawData[i][3]);
+            dataBase.inserirLocation(locations[i]);
+            dataBase.buscarLocation((String) rawData[i][0]);
         }
     }
 

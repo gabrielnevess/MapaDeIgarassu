@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    tools:context="iphan.pibex.igarassu.ifpe.edu.br.MapaActivity">
+    tools:context="iphan.pibex.igarassu.ifpe.edu.br.MapActivity">
 
     <fragment
         android:id="@+id/map"
