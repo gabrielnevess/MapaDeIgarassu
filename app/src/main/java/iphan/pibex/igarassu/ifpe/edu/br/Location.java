@@ -2,11 +2,13 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 
 public class Location {
     private String name;
-    private Double longitude;
-    private Double latitude;
+    private double longitude;
+    private double latitude;
     private String endereco;
 
-    public Location(String name, Double longitude, Double latitude, String endereco) {
+    public Location() {}
+
+    public Location(String name, double longitude, double latitude, String endereco) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -21,7 +23,7 @@ public class Location {
         this.name = name;
     }
 
-    public Double getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
@@ -29,7 +31,7 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public Double getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 

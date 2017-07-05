@@ -1,10 +1,19 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
- * Created by gabri on 09/06/2017.
+ * Created by gabri on 06/06/2017.
  */
 
 public class Constants {
-    public static String BD_NOME = "MapaDeIgarassu";
-    public static int VERSAO_BD = 1;
+
+    //constante Banco de Dados
+    public static final String BD_NOME = "MapaDeIgarassu";
+    public static final int VERSAO_BD = 5;
+
+    //constante center location para o mapa
+    public static final LatLng CENTER_LOCATION = new LatLng(-7.834195, -34.906142);
+
+
 }

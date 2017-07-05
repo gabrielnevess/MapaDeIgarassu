@@ -12,17 +12,16 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    private GoogleMap mMap;
     private View markerView;
     private CustomApplication application;
     private FloatingActionButton aboutMe;
@@ -30,15 +29,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa);
+        setContentView(R.layout.activity_map);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-
-
-        application = (CustomApplication) getApplication();
-        application.populateLocations();
 
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
 
@@ -57,39 +52,41 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         });
     }
 
-    private static final LatLng CENTER_LOCATION = new LatLng(-7.834195, -34.906142);
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        application = (CustomApplication) getApplication();
+        application.onAddMarker();
 
-        this.mMap = googleMap;
+        this.application.setMap(googleMap);
 
-        populateMap();
+        this.application.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
+        this.application.getMap().setOnMarkerClickListener(this);
 
-        this.mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CENTER_LOCATION, 16));
-        this.mMap.setOnMarkerClickListener(this);
+        infoWindow();
 
-        this.mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+        this.application.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                String name = marker.getTitle();
+                DataBase dataBase = new DataBase(getApplicationContext());
 
-                int i;
-                for (i = 0; i < application.getLocations().length; i++) {
-                    if (name.equals(application.getLocations()[i].getName())) {
-                        break;
-                    }
+                String name = marker.getTitle();
+                Location location = dataBase.buscarLocation(name);
+
+                if (name.equals(location.getName())) {
+                    Intent intent = new Intent(MapActivity.this, SeeMore.class);
+                    Bundle b = new Bundle();
+                    b.putString("name", location.getName());
+                    b.putString("address", location.getEndereco());
+                    intent.putExtras(b);
+                    startActivity(intent);
+
                 }
 
-                Intent intent = new Intent(MapActivity.this, SeeMore.class);
-                Bundle b = new Bundle();
-                b.putInt("id", i);
-                intent.putExtras(b);
-                startActivity(intent);
-
             }
+
+
         });
 
 
@@ -97,8 +94,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
     private void infoWindow() {
 
-        if (mMap != null) {
-            this.mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+        if (this.application.getMap() != null) {
+            this.application.getMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                 @Override
 
                 public View getInfoWindow(Marker marker) {
@@ -123,23 +120,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                 }
             });
         }
+
     }
 
-    private void populateMap() {
-
-        for (Location l : application.getLocations()) {
-            LatLng location = new LatLng(l.getLongitude(), l.getLatitude());
-
-            MarkerOptions options = new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marcador_mapa))
-                    .title(l.getName())
-                    .position(location);
-            this.mMap.addMarker(options);
-
-            infoWindow();
-
-        }
-    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {

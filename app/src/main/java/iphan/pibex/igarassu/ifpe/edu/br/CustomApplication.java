@@ -1,93 +1,78 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
 import android.app.Application;
-import iphan.pibex.igarassu.ifpe.edu.br.Database.DataBase;
 
-public class CustomApplication extends Application {
-    private Location[] locations;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
-    public Location[] getLocations() {
-        return locations;
+
+import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
+import iphan.pibex.igarassu.ifpe.edu.br.Firebase.ConnectionFireBase;
+
+public class CustomApplication extends Application implements OnMapReadyCallback {
+
+    private GoogleMap map;
+
+    public GoogleMap getMap() {
+        return this.map;
     }
 
-    public void setLocations(Location[] locations) {
-        this.locations = locations;
+    public void setMap(GoogleMap map) {
+        this.map = map;
     }
 
+    public void loadMarker() {
 
-    void populateLocations() {
-        // TODO: load the date from a file or and database
+        ConnectionFireBase.getReferenceFirebase()
+                .child("locations")
+                .addValueEventListener(
 
-        Object[][] rawData = new Object[][]{
-                {"Igreja e Convento Franciscanos de Santo Antônio", -7.832511, -34.905131, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}, //1
+                        new ValueEventListener() {
 
-                {"Secretária de Turismo", -7.8337595, -34.9054833, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},//2
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                {"Empresa de Urbanização de Igarassu(URBI)", -7.834452, -34.905451, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //3
+                                Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
+                                getMap().clear();
 
-                {"Câmara Municipal", -7.835233, -34.906164, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //4
+                                DataBase dataBase = new DataBase(getApplicationContext());
 
-                {"Ruínas da Igreja da Misericórdia", -7.8358037, -34.9073714, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},//5
+                                for (DataSnapshot dataSnapshot1 : dataSnapshots) {
 
-                {"Casa do Artesão", -7.834902, -34.906872, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //6
+                                    final Location local = dataSnapshot1.getValue(Location.class);
+                                    getMap().addMarker(new MarkerOptions()
+                                            .position(new LatLng(local.getLatitude(), local.getLongitude()))
+                                            .title(local.getName())
+                                            .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_map)));
 
-                {"Casa do Patrimônio em Igarassu/Iphan(Sobrado do Imperador)", -7.834733, -34.906740, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //7
+                                    dataBase.inserirLocation(local);
 
-                {"Recolhimento e Igreja do Sagrado Coração de Jesus", -7.834387, -34.906491, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //8
+                                }
 
-                {"Museu Histórico", -7.834078, -34.906410, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //9
+                            }
 
-                {"Igreja de São Cosme e São Damião", -7.834018, -34.906148, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //10
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                            }
 
-                {"Casa Paroquial", -7.833618, -34.906010, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //11
+                        });
 
-                {"CVT - Centro Vocacional Tecnológico", -7.833499, -34.905951, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //12
+    }
 
-                {"Biblioteca Municipal", -7.833318, -34.905844, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //13
+    public void onAddMarker() {
+        loadMarker();
+    }
 
-                {"Loja Maçônica", -7.832854, -34.906450, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},    //14
-                {"Secretária de Planejamento, Meio Ambiente e Patrimônio Histórico(SEPLAMAPH)", -7.832889, -34.906573, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-                //15
-                {"Prefeitura Municipal", -7.833217, -34.906572, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-                //16
-                {"Igreja de Nossa Senhora do Livramento", -7.833169, -34.906673, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-                //17
-                {"Centro de Artes e Cultura", -7.832004, -34.908098, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-                //18
-                {"Igreja de São Sebastião", -7.831667, -34.908622, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-                //19
-                {"Secretária de Obras", -7.8316536, -34.9091987, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}//20
-
-        };
-
-        this.locations = new Location[rawData.length];
-        DataBase dataBase = new DataBase(this);
-
-        for (int i = 0; i < rawData.length; i++) {
-            locations[i] = new Location((String) rawData[i][0], (Double) rawData[i][1], (Double) rawData[i][2], (String) rawData[i][3]);
-            dataBase.inserirLocation(locations[i]);
-            dataBase.buscarLocation((String) rawData[i][0]);
-        }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        onAddMarker();
     }
 
 }
+

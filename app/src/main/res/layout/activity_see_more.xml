@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/tv_titulo"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -33,7 +33,7 @@
             android:src="@mipmap/icon_iphan" />
 
         <TextView
-            android:id="@+id/tv_endereco"
+            android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="184dp"
             android:textAlignment="center"

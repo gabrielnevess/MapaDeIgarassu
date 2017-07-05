@@ -1,5 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Database;
-
+package iphan.pibex.igarassu.ifpe.edu.br.DataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,7 +13,7 @@ public class DataBase {
     public SQLiteDatabase database;
 
     public DataBase(Context context) {
-        DbConnection db = new DbConnection(context);
+        ConnectionDataBase db = new ConnectionDataBase(context);
         database = db.getWritableDatabase();
     }
 
@@ -23,19 +22,23 @@ public class DataBase {
         values.put("name", location.getName());
         values.put("longitude", location.getLongitude());
         values.put("latitude", location.getLatitude());
-        values.put("endereco", location.getEndereco());
+        values.put("address", location.getEndereco());
 
         Log.e("", "" + values.get("name"));
         database.insert("location", null, values);
-
     }
 
-    public void buscarLocation(String name) {
+    public Location buscarLocation(String name) {
 
-        Cursor cursor = database.query("location", new String[]{"name"}, "name = \'" + name + "\' ", null, null, null, null);
+        Cursor cursor = database.query("location", new String[]{"name", "address"}, "name = \'" + name + "\' ", null, null, null, null);
         cursor.moveToNext();
 
-        Log.e("", "" + cursor.getString(0));
+        Location location = new Location();
+        location.setName(cursor.getString(0));
+        location.setEndereco(cursor.getString(1));
+
+        return location;
 
     }
+
 }

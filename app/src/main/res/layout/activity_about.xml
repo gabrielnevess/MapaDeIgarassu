@@ -23,6 +23,6 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="112dp"
-        android:src="@mipmap/icon_sobre"
+        android:src="@mipmap/icon_about"
         android:layout_weight="0.16" />
 </LinearLayout>
