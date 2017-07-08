@@ -16,7 +16,7 @@ Assim, visando prover patrimônio de Igarassu através através da democratizaç
 
 GitHub para o projeto do Jogo da Memória 
 
-https://github.com/Mr-Holmes/JogoDaMemoria
+https://github.com/Mr-Holmes/Jogo-da-Memoria
 
 
 ### Metodologia
