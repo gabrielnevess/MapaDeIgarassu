@@ -9,7 +9,7 @@
 ### Introdução
 
   Este projeto nasceu da dificuldade que a Casa do Patrimônio IPHAN possui em divulgar e preservar o patrimônio de Igarassu. Ao longo dos anos o IPHAN vem produzindo artefatos gráficos como o catálogo Preservar Igarassu e além do jogo da memória de Igarassu. Atualmente estes artefatos são distribuídos às pessoas que porventura visitam a Casa do Patrimônio do IPHAN em Igarassu que acaba por restringir o acesso por meio da população.
-Assim, visando prover patrimônio de Igarassu através da democratização do acesso ao material produzido pela equipe técnicas o IPHAN, os aplicativos Mapa Cultural e Jogo da Memória do Patrimônio de Igarassu foram idealizados.
+Assim, visando prover patrimônio de Igarassu através da democratização do acesso ao material produzido pela equipe técnica do IPHAN, os aplicativos Mapa Cultural e Jogo da Memória do Patrimônio de Igarassu foram idealizados.
  A aplicação Mapa de Igarassu tem como objetivo principal atender às pessoas/instituições que têm interesse em conhecer e/ou obter mais informações sobre os principais pontos turístico de Igarassu utilizando a internet.
  
 ### GitHub Jogo da Memória
