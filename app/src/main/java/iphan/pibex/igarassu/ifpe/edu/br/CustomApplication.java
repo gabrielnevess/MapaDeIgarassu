@@ -51,7 +51,7 @@ public class CustomApplication extends Application implements OnMapReadyCallback
                                             .title(local.getName())
                                             .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_map)));
 
-                                    dataBase.inserirLocation(local);
+                                    dataBase.insertLocation(local);
 
                                 }
 

@@ -15,11 +15,11 @@ public class SeeMore extends FragmentActivity {
         String name = b.getString("name");
         String address = b.getString("address");
 
-        TextView tv_titulo = (TextView) findViewById(R.id.tv_title);
-        tv_titulo.setText(name);
+        TextView tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_title.setText(name);
 
-        TextView tv_endereco = (TextView) findViewById(R.id.tv_address);
-        tv_endereco.setText("Endereço: " + address);
+        TextView tv_address = (TextView) findViewById(R.id.tv_address);
+        tv_address.setText("Endereço: " + address);
 
     }
 }

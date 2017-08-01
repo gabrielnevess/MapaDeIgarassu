@@ -17,7 +17,7 @@ public class DataBase {
         database = db.getWritableDatabase();
     }
 
-    public void inserirLocation(Location location) {
+    public void insertLocation(Location location) {
         ContentValues values = new ContentValues();
         values.put("name", location.getName());
         values.put("longitude", location.getLongitude());
@@ -28,7 +28,7 @@ public class DataBase {
         database.insert("location", null, values);
     }
 
-    public Location buscarLocation(String name) {
+    public Location searchLocation(String name) {
 
         Cursor cursor = database.query("location", new String[]{"name", "address"}, "name = \'" + name + "\' ", null, null, null, null);
         cursor.moveToNext();

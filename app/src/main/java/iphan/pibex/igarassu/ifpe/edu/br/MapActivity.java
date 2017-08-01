@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -16,7 +15,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
-
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
@@ -72,7 +70,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                 DataBase dataBase = new DataBase(getApplicationContext());
 
                 String name = marker.getTitle();
-                Location location = dataBase.buscarLocation(name);
+                Location location = dataBase.searchLocation(name);
 
                 if (name.equals(location.getName())) {
                     Intent intent = new Intent(MapActivity.this, SeeMore.class);
