@@ -3,7 +3,11 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentActivity;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -13,16 +17,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private View markerView;
     private CustomApplication application;
-    private FloatingActionButton aboutMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,22 +38,22 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, 0, 0);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
 
-        onClick();
-
     }
 
-    private void onClick() {
-        aboutMe = (FloatingActionButton) findViewById(R.id.aboutMe);
-        aboutMe.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sobre = new Intent(MapActivity.this, About.class);
-                startActivity(sobre);
-            }
-        });
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -126,5 +131,42 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     public boolean onMarkerClick(Marker marker) {
         return false;
     }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
 
 }
