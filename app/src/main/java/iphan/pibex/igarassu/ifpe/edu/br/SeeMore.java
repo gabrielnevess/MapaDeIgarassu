@@ -39,6 +39,7 @@ public class SeeMore extends AppCompatActivity {
 
     private void toolbarTextAppearance() {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
     }
 
 
