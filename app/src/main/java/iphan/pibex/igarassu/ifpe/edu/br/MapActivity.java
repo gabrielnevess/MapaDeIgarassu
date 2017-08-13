@@ -66,6 +66,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         this.application.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
         this.application.getMap().setOnMarkerClickListener(this);
 
+        //buttons de zoom
+        this.application.getMap().getUiSettings().setZoomControlsEnabled(true);
+
         infoWindow();
 
         this.application.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
