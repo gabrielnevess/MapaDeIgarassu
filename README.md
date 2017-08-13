@@ -24,7 +24,7 @@ https://github.com/Mr-Holmes/Jogo-da-Memoria
 O método utilizados forma o conhecimento a partir de estudos das  documentações e pesquisas relacionadas à plataforma Android, e a aplicação de metodologias ágeis: SCRUM e Xtremening Progamming - XP.
 
  
-### Desenvolvido
+### Por quem é desenvolvido?
  
 O Mapa de Igarassu é Desenvolvido por Gabriel Lima e Gabriel Silva - Alunos do Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco.
 
@@ -35,14 +35,13 @@ Você poderá ajudar no projeto, reportando erros, bugs ou sugestões de novas f
 Contato: Gabriel Silva (gabriel-silva_2011@hotmail.com) / Gabriel Lima (mugiwara.gl@gmail.com) 
  
 
-### Financiador
+### Quem financia o projeto?
 
 Este projeto é financiado pelo PIBEX Técnico/IFPE, desde Fevereiro de 2017 e têm contado com a constante colaboração do IPHAN representado pela casa do patrimônio de Igarassu.
 
 
 ### Licença MIT
  
-O Mapa de Igarassu é lançado sob a Licença MTI, que pode ser encontrada no arquivo LICENSE na raiz deste projeto.
- 
+O Mapa de Igarassu é lançado sob a Licença MIT, que pode ser encontrada no arquivo LICENSE na raiz deste projeto.
  
 
