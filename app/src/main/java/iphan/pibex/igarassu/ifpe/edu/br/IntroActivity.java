@@ -1,6 +1,5 @@
 package iphan.pibex.igarassu.ifpe.edu.br;
 
-import android.*;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +9,6 @@ import android.view.View;
 import agency.tango.materialintroscreen.MaterialIntroActivity;
 import agency.tango.materialintroscreen.MessageButtonBehaviour;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
-
-/**
- * Created by gabri on 15/08/2017.
- */
 
 public class IntroActivity extends MaterialIntroActivity {
     @Override

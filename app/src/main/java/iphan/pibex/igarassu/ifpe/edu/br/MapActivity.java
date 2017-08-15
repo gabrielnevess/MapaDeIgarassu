@@ -23,7 +23,6 @@ import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
-
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
 

@@ -5,10 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import iphan.pibex.igarassu.ifpe.edu.br.Constants;
 
-/**
- * Created by gabri on 06/06/2017.
- */
-
 public class ConnectionDataBase extends SQLiteOpenHelper{
 
     public ConnectionDataBase(Context context) {

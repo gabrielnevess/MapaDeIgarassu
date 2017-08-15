@@ -10,10 +10,6 @@ import android.widget.CheckBox;
 
 import agency.tango.materialintroscreen.SlideFragment;
 
-/**
- * Created by gabri on 15/08/2017.
- */
-
 public class TermsConditionsSlide extends SlideFragment {
 
     private CheckBox checkBox;
@@ -27,11 +23,11 @@ public class TermsConditionsSlide extends SlideFragment {
     @Override
     public boolean canMoveFurther() {
         checkBox = (CheckBox) getActivity().findViewById(R.id.cb_concordo);
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             SharedPref.updateIntroStatus(getContext(), true);
 
             Intent intent = new Intent(getActivity(), MapActivity.class);
-            intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             getActivity().finish();
 

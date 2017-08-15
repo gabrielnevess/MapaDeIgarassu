@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-
 public class SplashScreen extends Activity implements Runnable {
 
     private ProgressBar mProgress;

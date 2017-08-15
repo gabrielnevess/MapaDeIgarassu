@@ -3,10 +3,6 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by gabri on 15/08/2017.
- */
-
 public class SharedPref {
 
 

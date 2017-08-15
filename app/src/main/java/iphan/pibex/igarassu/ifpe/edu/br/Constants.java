@@ -2,10 +2,6 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 
 import com.google.android.gms.maps.model.LatLng;
 
-/**
- * Created by gabri on 06/06/2017.
- */
-
 public class Constants {
 
     //constante Banco de Dados
