@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 
 public class SplashScreen extends Activity implements Runnable {
+
     private ProgressBar mProgress;
     private ImageView splashScreen;
 
@@ -28,7 +29,7 @@ public class SplashScreen extends Activity implements Runnable {
 
     @Override
     public void run() {
-        Intent intent = new Intent(SplashScreen.this, MapActivity.class);
+        Intent intent = new Intent(SplashScreen.this, IntroActivity.class);
         startActivity(intent);
         finish();
     }

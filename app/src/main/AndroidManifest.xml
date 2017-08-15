@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="iphan.pibex.igarassu.ifpe.edu.br">
+    package="iphan.pibex.igarassu.ifpe.edu.br">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -34,6 +34,9 @@
         </activity>
 
         <activity android:name=".MapActivity" />
+        <activity
+            android:name=".IntroActivity"
+            android:theme="@style/Theme.Intro" />
         <activity android:name=".SeeMore" />
         <activity android:name=".About" />
 

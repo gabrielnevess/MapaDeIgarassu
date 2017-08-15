@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
 
+    <color name="slide_button">#66000000</color>
+    <color name="slide_1">#88c441</color>
+    <color name="slide_2">#6734b9</color>
+    <color name="slide_3">#ff5607</color>
+    <color name="slide_4">#5f7c8b</color>
+
 </resources>
