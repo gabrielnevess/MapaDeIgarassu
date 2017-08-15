@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.DataBase;
+package iphan.pibex.igarassu.ifpe.edu.br;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import iphan.pibex.igarassu.ifpe.edu.br.ConnectionDataBase;
 import iphan.pibex.igarassu.ifpe.edu.br.Location;
 
 public class DataBase {

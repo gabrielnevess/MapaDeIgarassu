@@ -3,7 +3,6 @@ package iphan.pibex.igarassu.ifpe.edu.br;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,7 +19,6 @@ import com.google.android.gms.maps.model.Marker;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 

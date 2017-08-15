@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 
-import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
 import iphan.pibex.igarassu.ifpe.edu.br.Firebase.ConnectionFireBase;
 
 public class CustomApplication extends Application implements OnMapReadyCallback {
