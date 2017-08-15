@@ -19,6 +19,8 @@ import com.google.android.gms.maps.model.Marker;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
+
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 

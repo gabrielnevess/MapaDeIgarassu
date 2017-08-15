@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.DataBase;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
