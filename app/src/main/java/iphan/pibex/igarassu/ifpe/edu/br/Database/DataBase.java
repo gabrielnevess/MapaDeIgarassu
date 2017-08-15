@@ -1,5 +1,6 @@
 package iphan.pibex.igarassu.ifpe.edu.br.DataBase;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,7 +11,7 @@ import iphan.pibex.igarassu.ifpe.edu.br.Location;
 
 public class DataBase {
 
-    public SQLiteDatabase database;
+    private SQLiteDatabase database;
 
     public DataBase(Context context) {
         ConnectionDataBase db = new ConnectionDataBase(context);
@@ -30,6 +31,7 @@ public class DataBase {
 
     public Location searchLocation(String name) {
 
+        @SuppressLint("Recycle")
         Cursor cursor = database.query("location", new String[]{"name", "address"}, "name = \'" + name + "\' ", null, null, null, null);
         cursor.moveToNext();
 
