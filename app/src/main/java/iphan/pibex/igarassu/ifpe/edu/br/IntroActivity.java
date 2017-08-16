@@ -27,7 +27,10 @@ public class IntroActivity extends MaterialIntroActivity {
 
         );
 
-        String[] neededPermissons = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+        String[] neededPermissons = new String[]{
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        };
         addSlide(
                 new SlideFragmentBuilder()
                         .backgroundColor(R.color.slide_2)
