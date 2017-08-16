@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="36dp"
-        android:text="@string/slide_4_title"
+        android:text="@string/slide_3_title"
         android:textColor="@android:color/white"
         android:textSize="26sp" />
 
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/slide_4_content" />
+            android:text="@string/slide_3_content" />
     </ScrollView>
 
     <CheckBox
@@ -32,6 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="76dp"
-        android:text="@string/slide_4_checkbox_label"
+        android:text="@string/slide_3_checkbox_label"
         android:textColor="@android:color/white" />
 </LinearLayout>

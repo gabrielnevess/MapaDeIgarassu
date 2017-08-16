@@ -4,16 +4,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
+import android.widget.CheckBox;
 
 import agency.tango.materialintroscreen.MaterialIntroActivity;
-import agency.tango.materialintroscreen.MessageButtonBehaviour;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
 
 public class IntroActivity extends MaterialIntroActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         verifyIntroActivity();
         addSlide(
                 new SlideFragmentBuilder()
@@ -22,15 +23,9 @@ public class IntroActivity extends MaterialIntroActivity {
                         .title(getResources().getString(R.string.slide_1_title))
                         .description(getResources().getString(R.string.slide_1_description))
                         .image(R.mipmap.ic_launcher)
-                        .build(),
-                new MessageButtonBehaviour(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showMessage(getResources().getString(R.string.slide_1_button_message));
-                    }
-                }, getResources().getString(R.string.slide_1_button_label))
-        );
+                        .build()
 
+        );
 
         String[] neededPermissons = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
         addSlide(
@@ -49,8 +44,8 @@ public class IntroActivity extends MaterialIntroActivity {
 
     }
 
-    private void verifyIntroActivity(){
-        if(SharedPref.isIntroActivityShow(this)){
+    private void verifyIntroActivity() {
+        if (SharedPref.isIntroActivityShow(this)) {
             Intent intent = new Intent(IntroActivity.this, MapActivity.class);
             startActivity(intent);
         }

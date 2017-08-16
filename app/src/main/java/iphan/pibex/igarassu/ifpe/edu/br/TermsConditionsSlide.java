@@ -38,12 +38,12 @@ public class TermsConditionsSlide extends SlideFragment {
 
     @Override
     public String cantMoveFurtherErrorMessage() {
-        return getActivity().getResources().getString(R.string.slide_4_checkbox_error);
+        return getActivity().getResources().getString(R.string.slide_3_checkbox_error);
     }
 
     @Override
     public int backgroundColor() {
-        return R.color.slide_4;
+        return R.color.slide_3;
     }
 
     @Override
