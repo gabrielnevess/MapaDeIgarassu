@@ -32,7 +32,7 @@ public class SeeMore extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(name);
 
-        TextView tv_address = (TextView) findViewById(R.id.tv_address);
+        TextView tv_address = (TextView) findViewById(R.id.tv_information);
         tv_address.setText("Endereço: " + address);
 
         toolbarTextAppearance();

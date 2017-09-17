@@ -47,6 +47,9 @@ public class IntroActivity extends MaterialIntroActivity {
 
     }
 
+    /**
+     * Método que verifica estado da activity de introdução
+     */
     private void verifyIntroActivity() {
         if (SharedPref.isIntroActivityShow(this)) {
             Intent intent = new Intent(IntroActivity.this, MapActivity.class);
