@@ -15,12 +15,14 @@
         android:roundIcon="@mipmap/icon_iphan_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,12 +30,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MapActivity" />
+        <activity
+            android:name=".MapActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".IntroActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Intro" />
-        <activity android:name=".SeeMore" />
-        <activity android:name=".About" />
+        <activity
+            android:name=".SeeMore"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:screenOrientation="portrait" />
 
     </application>
 
