@@ -17,7 +17,7 @@ public class SplashScreen extends Activity implements Runnable {
 
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mProgress.getIndeterminateDrawable().setColorFilter(Color.parseColor("#FF4C35"), PorterDuff.Mode.MULTIPLY);
-        mProgress.postDelayed(this, 3000);
+        mProgress.postDelayed(this, 2600);
 
     }
 

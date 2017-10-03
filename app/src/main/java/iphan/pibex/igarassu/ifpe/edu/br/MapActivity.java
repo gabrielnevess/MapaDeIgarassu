@@ -86,7 +86,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Intent intent = new Intent(MapActivity.this, SeeMore.class);
                     Bundle b = new Bundle();
                     b.putString("name", location.getName());
-                    b.putString("address", location.getEndereco());
+                    b.putString("address", location.getAddress());
+                    b.putString("description", location.getDescription());
                     intent.putExtras(b);
                     startActivity(intent);
 

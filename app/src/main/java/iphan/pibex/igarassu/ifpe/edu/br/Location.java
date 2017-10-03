@@ -4,15 +4,18 @@ public class Location {
     private String name;
     private double longitude;
     private double latitude;
-    private String endereco;
+    private String address;
+    private String description;
 
-    public Location() {}
+    public Location() {
+    }
 
-    public Location(String name, double longitude, double latitude, String endereco) {
+    public Location(String name, double longitude, double latitude, String address, String description) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.endereco = endereco;
+        this.address = address;
+        this.description = description;
     }
 
     public String getName() {
@@ -39,11 +42,19 @@ public class Location {
         this.latitude = latitude;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

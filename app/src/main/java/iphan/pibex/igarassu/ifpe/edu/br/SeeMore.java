@@ -21,6 +21,7 @@ public class SeeMore extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         String name = b.getString("name");
         String address = b.getString("address");
+        String description = b.getString("description");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_see_more);
         setSupportActionBar(toolbar);
@@ -32,8 +33,10 @@ public class SeeMore extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(name);
 
-        TextView tv_address = (TextView) findViewById(R.id.tv_information);
-        tv_address.setText("Endereço: " + address);
+        TextView tv_information = (TextView) findViewById(R.id.tv_information);
+        tv_information.setText("Endereço: " + address
+                + "\n" + "Descrição: " + description
+        );
 
         toolbarTextAppearance();
 
