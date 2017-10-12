@@ -10,16 +10,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
+import iphan.pibex.igarassu.ifpe.edu.br.Firebase.GoogleMaps;
+
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
 
@@ -27,7 +31,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private View markerView;
-    private CustomApplication application;
+    private AddMarkerMapFirebase addMarkerMapFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +62,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        application = (CustomApplication) getApplication();
-        application.onAddMarker();
+        addMarkerMapFirebase = new AddMarkerMapFirebase(this);
 
-        this.application.setMap(googleMap);
+        GoogleMaps.setMap(googleMap);
+        addMarkerMapFirebase.onAddMarker();
 
-        this.application.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
-        this.application.getMap().setOnMarkerClickListener(this);
+        GoogleMaps.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
+        GoogleMaps.getMap().setOnMarkerClickListener(this);
 
         /**
          * Botões de Zoom
          */
-        this.application.getMap().getUiSettings().setZoomControlsEnabled(true);
+        GoogleMaps.getMap().getUiSettings().setZoomControlsEnabled(true);
 
         infoWindow();
 
-        this.application.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+        GoogleMaps.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
 
@@ -103,8 +107,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void infoWindow() {
 
-        if (this.application.getMap() != null) {
-            this.application.getMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+        if (GoogleMaps.getMap() != null) {
+            GoogleMaps.getMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                 @Override
 
                 public View getInfoWindow(Marker marker) {
