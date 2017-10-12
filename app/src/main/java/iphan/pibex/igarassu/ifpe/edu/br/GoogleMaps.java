@@ -1,10 +1,6 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Firebase;
+package iphan.pibex.igarassu.ifpe.edu.br;
 
 import com.google.android.gms.maps.GoogleMap;
-
-/**
- * Created by gabri on 11/10/2017.
- */
 
 public class GoogleMaps {
 

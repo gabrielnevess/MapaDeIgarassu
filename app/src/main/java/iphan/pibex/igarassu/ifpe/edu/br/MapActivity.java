@@ -22,7 +22,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
-import iphan.pibex.igarassu.ifpe.edu.br.Firebase.GoogleMaps;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 

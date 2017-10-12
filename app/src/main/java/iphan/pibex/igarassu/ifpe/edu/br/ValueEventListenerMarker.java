@@ -10,7 +10,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
-import iphan.pibex.igarassu.ifpe.edu.br.Firebase.GoogleMaps;
 
 public class ValueEventListenerMarker implements ValueEventListener {
 
