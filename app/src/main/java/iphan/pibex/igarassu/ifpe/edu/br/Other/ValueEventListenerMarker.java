@@ -18,6 +18,11 @@ public class ValueEventListenerMarker implements ValueEventListener {
 
     private Context context;
 
+    /**
+     * Método de Listener(esse método ficará ouvindo um evento se por acaso ouver alguma mudança no firebase
+     * por exemplo: a adição de um novo ponto).
+     * @param context
+     */
     public ValueEventListenerMarker(Context context) {
         this.context = context;
     }
@@ -26,18 +31,18 @@ public class ValueEventListenerMarker implements ValueEventListener {
     public void onDataChange(DataSnapshot dataSnapshot) {
 
         Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
-        GoogleMapsModel.getMap().clear();
+        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
 
         DataBaseUtil dataBaseUtil = new DataBaseUtil(this.context);
 
-        for (DataSnapshot dataSnapshot1 : dataSnapshots) {
+        for (DataSnapshot dataSnapshot1 : dataSnapshots) { /*Inserindo pontos ao mapa*/
 
             final LocationModel local = dataSnapshot1.getValue(LocationModel.class);
             GoogleMapsModel.getMap().addMarker(new MarkerOptions()
                     .position(new LatLng(local.getLatitude(), local.getLongitude()))
                     .title(local.getName())
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_map)));
-            dataBaseUtil.insertLocation(local);
+            dataBaseUtil.insertLocation(local); /*Inserindo pontos marcados no mapa para o banco local*/
 
         }
 

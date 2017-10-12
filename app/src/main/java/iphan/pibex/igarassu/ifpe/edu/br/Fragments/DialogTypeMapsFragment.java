@@ -12,6 +12,9 @@ import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
 
+/**
+ * Método de AlertDialog para escolha do tipo do mapa
+ */
 public class DialogTypeMapsFragment extends DialogFragment {
     public static void alertDialog(final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

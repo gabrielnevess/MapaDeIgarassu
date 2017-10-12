@@ -22,6 +22,11 @@ public class GoogleInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         return null;
     }
 
+    /**
+     * Método de Pop-up de cada marker
+     * @param marker
+     * @return
+     */
     @Override
     public View getInfoContents(Marker marker) {
 

@@ -40,13 +40,22 @@ public class SharedPrefUtil {
         return getPref(context).getBoolean("status", false);
     }
 
-
+    /**
+     * Método para setar o tipo do mapa
+     * @param context
+     * @param type
+     */
     public static void setTypeMaps(Context context, int type){
         editor = getPref(context).edit();
         editor.putInt("typeMaps", type);
         editor.commit();
     }
 
+    /**
+     * Método para pegar o tipo do mapa
+     * @param context
+     * @return
+     */
     public static int getTypeMaps(Context context){
         return getPref(context).getInt("typeMaps", 0);
     }

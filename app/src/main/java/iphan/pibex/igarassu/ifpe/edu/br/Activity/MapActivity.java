@@ -47,6 +47,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        /*SupportMapFragment ==> Mapa*/
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
@@ -54,15 +55,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*Cabeçalho do menu*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, 0, 0);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        /*Menu*/
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        /*Inflate para o pop-up dos markers(Janela em cima do marker)*/
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
 
     }
@@ -72,6 +76,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         GoogleMapsModel.setMap(googleMap);
 
+        /*Verificação de tipos de mapa*/
         if(Constants.MAP_TYPE_HYBRID == SharedPrefUtil.getTypeMaps(this)){
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
 
@@ -82,25 +87,24 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
         }
 
-
+        /*Adicionando pontos realizando download diretamente do firebase*/
         addMarkerMapFirebase = new AddMarkerMapFirebase(this);
-        addMarkerMapFirebase.onAddMarker();
+        addMarkerMapFirebase.onAddMarker(); /*Adicionando Marker no mapa*/
 
-        GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
-        GoogleMapsModel.getMap().setOnMarkerClickListener(this);
+        GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
+        GoogleMapsModel.getMap().setOnMarkerClickListener(this); /*Listener*/
 
-        /**
-         * Botões de Zoom
-         */
+        /*Botões de Zoom*/
         GoogleMapsModel.getMap().getUiSettings().setZoomControlsEnabled(true);
 
         infoWindow();
 
+        /*Listener de cada marker*/
         GoogleMapsModel.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                DataBaseUtil dataBaseUtil = new DataBaseUtil(getApplicationContext());
+                DataBaseUtil dataBaseUtil = new DataBaseUtil(getApplicationContext()); /*Instância da base de dados local*/
 
                 String name = marker.getTitle();
                 LocationModel locationModel = dataBaseUtil.searchLocation(name);
@@ -122,6 +126,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
+    /*Método infoWindow, colocar pop-up para todos os marker*/
     private void infoWindow() {
 
         if (GoogleMapsModel.getMap() != null) {
@@ -134,16 +139,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return false;
     }
 
+    /*Menu*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_about) {
+        if (id == R.id.nav_about) { /*Ação para ir a tela de sobre*/
             Intent intent = new Intent(MapActivity.this, AboutActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_type_maps) {
+        } else if (id == R.id.nav_type_maps) { /*Alert Dialog para escolher o tipo do mapa*/
             DialogTypeMapsFragment.alertDialog(this);
         }
 
@@ -152,6 +158,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return true;
     }
 
+    /*Método de back do botão do celular*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

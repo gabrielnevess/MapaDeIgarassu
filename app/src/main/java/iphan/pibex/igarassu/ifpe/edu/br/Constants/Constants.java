@@ -15,7 +15,7 @@ public class Constants {
     public static final String ADDRESS = "address";
     public static final String DESCRIPTION = "description";
 
-    //tipos de mapa
+    //constantes para os tipos de mapa
     public static final int MAP_TYPE_NONE = 0;
     public static final int MAP_TYPE_NORMAL = 1;
     public static final int MAP_TYPE_SATELLITE = 2;
