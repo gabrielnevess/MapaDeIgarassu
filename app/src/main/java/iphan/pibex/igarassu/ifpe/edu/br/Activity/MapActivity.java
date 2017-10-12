@@ -1,8 +1,6 @@
 package iphan.pibex.igarassu.ifpe.edu.br.Activity;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,6 +39,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private AddMarkerMapFirebase addMarkerMapFirebase;
     private View markerView;
+    private final Context context;
+
+    public MapActivity(){
+        this.context = this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +107,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                DataBaseUtil dataBaseUtil = new DataBaseUtil(getApplicationContext()); /*Instância da base de dados local*/
+                DataBaseUtil dataBaseUtil = new DataBaseUtil(context); /*Instância da base de dados local*/
 
                 String name = marker.getTitle();
                 LocationModel locationModel = dataBaseUtil.searchLocation(name);
