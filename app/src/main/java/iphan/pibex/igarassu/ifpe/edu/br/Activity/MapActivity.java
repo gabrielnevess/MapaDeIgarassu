@@ -72,12 +72,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         GoogleMapsModel.setMap(googleMap);
 
-        if(SharedPrefUtil.getTypeMaps(this).equals(Constants.SATELLITE)){
-            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        }else if(SharedPrefUtil.getTypeMaps(this).equals(Constants.TERRAIN)){
-            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        if(Constants.MAP_TYPE_HYBRID == SharedPrefUtil.getTypeMaps(this)){
+            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
+
+        }else if(Constants.MAP_TYPE_TERRAIN == SharedPrefUtil.getTypeMaps(this)){
+            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_TERRAIN);
+
         }else{
-            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
         }
 
 

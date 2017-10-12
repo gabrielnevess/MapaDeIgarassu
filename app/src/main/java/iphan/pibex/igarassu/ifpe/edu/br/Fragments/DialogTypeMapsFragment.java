@@ -19,15 +19,15 @@ public class DialogTypeMapsFragment extends DialogFragment {
                 .setItems(R.array.type_maps, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 0) {
-                            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                            SharedPrefUtil.setTypeMaps(context, Constants.NORMAL);
+                            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
+                            SharedPrefUtil.setTypeMaps(context, Constants.MAP_TYPE_NORMAL);
                         } else if (which == 1) {
-                            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                            SharedPrefUtil.setTypeMaps(context, Constants.SATELLITE);
+                            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
+                            SharedPrefUtil.setTypeMaps(context, Constants.MAP_TYPE_HYBRID);
 
                         } else if (which == 2) {
-                            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-                            SharedPrefUtil.setTypeMaps(context, Constants.TERRAIN);
+                            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_TERRAIN);
+                            SharedPrefUtil.setTypeMaps(context, Constants.MAP_TYPE_TERRAIN);
                         }
                     }
                 });

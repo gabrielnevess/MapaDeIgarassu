@@ -41,14 +41,14 @@ public class SharedPrefUtil {
     }
 
 
-    public static void setTypeMaps(Context context, String type){
+    public static void setTypeMaps(Context context, int type){
         editor = getPref(context).edit();
-        editor.putString("typeMaps", type);
+        editor.putInt("typeMaps", type);
         editor.commit();
     }
 
-    public static String getTypeMaps(Context context){
-        return getPref(context).getString("typeMaps", "");
+    public static int getTypeMaps(Context context){
+        return getPref(context).getInt("typeMaps", 0);
     }
 
 }

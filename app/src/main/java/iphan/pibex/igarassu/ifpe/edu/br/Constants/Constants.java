@@ -16,9 +16,11 @@ public class Constants {
     public static final String DESCRIPTION = "description";
 
     //tipos de mapa
-    public static final String NORMAL = "normal";
-    public static final String SATELLITE = "satelite";
-    public static final String TERRAIN = "terreno";
+    public static final int MAP_TYPE_NONE = 0;
+    public static final int MAP_TYPE_NORMAL = 1;
+    public static final int MAP_TYPE_SATELLITE = 2;
+    public static final int MAP_TYPE_TERRAIN = 3;
+    public static final int MAP_TYPE_HYBRID = 4;
 
     //constante SharedPreferences
     public static final String PREF_NAME = "SharedPreferences";
