@@ -7,6 +7,8 @@ import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
 
 public class SharedPrefUtil {
 
+    public static SharedPreferences.Editor editor;
+
     /**
      * Método que pega o contexto da activity e retorna modo de armazenamento no xml.
      * @param context
@@ -23,7 +25,7 @@ public class SharedPrefUtil {
      * @param status
      */
     public static void updateIntroStatus(Context context, boolean status){
-        SharedPreferences.Editor editor = getPref(context).edit();
+        editor = getPref(context).edit();
         editor.putBoolean("status", status);
         editor.commit();
 
@@ -38,5 +40,15 @@ public class SharedPrefUtil {
         return getPref(context).getBoolean("status", false);
     }
 
+
+    public static void setTypeMaps(Context context, String type){
+        editor = getPref(context).edit();
+        editor.putString("typeMaps", type);
+        editor.commit();
+    }
+
+    public static String getTypeMaps(Context context){
+        return getPref(context).getString("typeMaps", "");
+    }
 
 }

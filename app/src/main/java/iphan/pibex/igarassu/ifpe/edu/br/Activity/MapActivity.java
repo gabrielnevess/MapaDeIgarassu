@@ -1,5 +1,8 @@
 package iphan.pibex.igarassu.ifpe.edu.br.Activity;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,12 +24,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import iphan.pibex.igarassu.ifpe.edu.br.Adapter.GoogleInfoWindowAdapter;
+import iphan.pibex.igarassu.ifpe.edu.br.Fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.Other.AddMarkerMapFirebase;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
@@ -65,9 +70,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        addMarkerMapFirebase = new AddMarkerMapFirebase(this);
-
         GoogleMapsModel.setMap(googleMap);
+
+        if(SharedPrefUtil.getTypeMaps(this).equals(Constants.SATELLITE)){
+            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        }else if(SharedPrefUtil.getTypeMaps(this).equals(Constants.TERRAIN)){
+            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        }else{
+            GoogleMapsModel.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        }
+
+
+        addMarkerMapFirebase = new AddMarkerMapFirebase(this);
         addMarkerMapFirebase.onAddMarker();
 
         GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
@@ -127,6 +141,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if (id == R.id.nav_about) {
             Intent intent = new Intent(MapActivity.this, AboutActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_type_maps) {
+            DialogTypeMapsFragment.alertDialog(this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

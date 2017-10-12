@@ -2,10 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group>
+
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_about"
             android:title="Sobre" />
+        <item
+            android:id="@+id/nav_type_maps"
+            android:icon="@drawable/ic_menu_type_maps"
+            android:title="Tipos de Mapa" />
+
     </group>
 
 </menu>

@@ -2,6 +2,8 @@
     <string name="app_name">Mapa de Igarassu</string>
     <string name="title_activity_mapa">MapaDeIgarassu</string>
 
+    <string name="type_maps">Tipos de Mapa</string>
+
     <string name="slide_1_title">Primeira Utilização</string>
     <string name="slide_1_description">
         Olá, Seja Bem Vindo ao Aplicativo Mapa de Igarassu, nele
