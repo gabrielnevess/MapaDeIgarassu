@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import agency.tango.materialintroscreen.SlideFragment;
+import iphan.pibex.igarassu.ifpe.edu.br.Activity.MapActivity;
+import iphan.pibex.igarassu.ifpe.edu.br.R;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
 
-public class TermsConditionsSlide extends SlideFragment {
+public class TermsConditionsSlideFragment extends SlideFragment {
 
     private CheckBox checkBox;
 
@@ -24,7 +27,7 @@ public class TermsConditionsSlide extends SlideFragment {
     public boolean canMoveFurther() {
         checkBox = (CheckBox) getActivity().findViewById(R.id.cb_concordo);
         if (checkBox.isChecked()) {
-            SharedPref.updateIntroStatus(getContext(), true);
+            SharedPrefUtil.updateIntroStatus(getContext(), true);
 
             Intent intent = new Intent(getActivity(), MapActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

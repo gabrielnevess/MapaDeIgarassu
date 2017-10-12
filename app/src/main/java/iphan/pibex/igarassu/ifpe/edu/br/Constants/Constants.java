@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Constants;
 
 import com.google.android.gms.maps.model.LatLng;
 

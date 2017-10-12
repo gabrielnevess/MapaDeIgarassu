@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Other;
 
 import android.content.Context;
 
@@ -9,7 +9,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
+import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.R;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
 
 public class ValueEventListenerMarker implements ValueEventListener {
 
@@ -23,25 +26,24 @@ public class ValueEventListenerMarker implements ValueEventListener {
     public void onDataChange(DataSnapshot dataSnapshot) {
 
         Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
-        GoogleMaps.getMap().clear();
+        GoogleMapsModel.getMap().clear();
 
-        DataBase dataBase = new DataBase(this.context);
+        DataBaseUtil dataBaseUtil = new DataBaseUtil(this.context);
 
         for (DataSnapshot dataSnapshot1 : dataSnapshots) {
 
-            final Location local = dataSnapshot1.getValue(Location.class);
-            GoogleMaps.getMap().addMarker(new MarkerOptions()
+            final LocationModel local = dataSnapshot1.getValue(LocationModel.class);
+            GoogleMapsModel.getMap().addMarker(new MarkerOptions()
                     .position(new LatLng(local.getLatitude(), local.getLongitude()))
                     .title(local.getName())
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_map)));
-            dataBase.insertLocation(local);
+            dataBaseUtil.insertLocation(local);
 
         }
 
     }
 
     @Override
-    public void onCancelled(DatabaseError error) {
-    }
+    public void onCancelled(DatabaseError error) {}
 
 }

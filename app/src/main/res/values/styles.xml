@@ -11,7 +11,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Estilo para SplashScreen -->
+    <!-- Estilo para SplashScreenActivity -->
     <style name="AppTheme.FullScreen" parent="AppTheme">
         <item name="android:windowFullscreen">true</item>
     </style>
@@ -25,14 +25,14 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-    <!-- Estilo para o toolbar da activity SeeMore (Quando a toolbar estiver expandida)-->
+    <!-- Estilo para o toolbar da activity SeeMoreActivity (Quando a toolbar estiver expandida)-->
     <style name="expandedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Estilo para o toolbar da activity SeeMore -->
+    <!-- Estilo para o toolbar da activity SeeMoreActivity -->
     <style name="collapsedappbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/white</item>

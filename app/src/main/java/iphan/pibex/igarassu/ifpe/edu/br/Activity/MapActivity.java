@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,20 +8,25 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
-import iphan.pibex.igarassu.ifpe.edu.br.DataBase.DataBase;
+import iphan.pibex.igarassu.ifpe.edu.br.Adapter.GoogleInfoWindowAdapter;
+import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.Other.AddMarkerMapFirebase;
+import iphan.pibex.igarassu.ifpe.edu.br.R;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
@@ -29,8 +34,8 @@ import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    private View markerView;
     private AddMarkerMapFirebase addMarkerMapFirebase;
+    private View markerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,82 +62,55 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         addMarkerMapFirebase = new AddMarkerMapFirebase(this);
 
-        GoogleMaps.setMap(googleMap);
+        GoogleMapsModel.setMap(googleMap);
         addMarkerMapFirebase.onAddMarker();
 
-        GoogleMaps.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
-        GoogleMaps.getMap().setOnMarkerClickListener(this);
+        GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16));
+        GoogleMapsModel.getMap().setOnMarkerClickListener(this);
 
         /**
          * Botões de Zoom
          */
-        GoogleMaps.getMap().getUiSettings().setZoomControlsEnabled(true);
+        GoogleMapsModel.getMap().getUiSettings().setZoomControlsEnabled(true);
 
         infoWindow();
 
-        GoogleMaps.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+        GoogleMapsModel.getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                DataBase dataBase = new DataBase(getApplicationContext());
+                DataBaseUtil dataBaseUtil = new DataBaseUtil(getApplicationContext());
 
                 String name = marker.getTitle();
-                Location location = dataBase.searchLocation(name);
+                LocationModel locationModel = dataBaseUtil.searchLocation(name);
 
-                if (name.equals(location.getName())) {
-                    Intent intent = new Intent(MapActivity.this, SeeMore.class);
+                if (name.equals(locationModel.getName())) {
+                    Intent intent = new Intent(MapActivity.this, SeeMoreActivity.class);
                     Bundle b = new Bundle();
-                    b.putString("name", location.getName());
-                    b.putString("address", location.getAddress());
-                    b.putString("description", location.getDescription());
+                    b.putString("name", locationModel.getName());
+                    b.putString("address", locationModel.getAddress());
+                    b.putString("description", locationModel.getDescription());
                     intent.putExtras(b);
                     startActivity(intent);
 
                 }
-
             }
 
 
         });
 
-
     }
 
     private void infoWindow() {
 
-        if (GoogleMaps.getMap() != null) {
-            GoogleMaps.getMap().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-                @Override
-
-                public View getInfoWindow(Marker marker) {
-                    return null;
-                }
-
-                @Override
-                public View getInfoContents(Marker marker) {
-
-                    TextView tvLocality = (TextView) markerView.findViewById(R.id.tv_locality);
-                    TextView tvLat = (TextView) markerView.findViewById(R.id.tv_lat);
-                    TextView tvLng = (TextView) markerView.findViewById(R.id.tv_lng);
-                    TextView tvSnippet = (TextView) markerView.findViewById(R.id.tv_snippet);
-
-                    LatLng location = marker.getPosition();
-                    tvLocality.setText(marker.getTitle());
-                    tvLat.setText("Latitude: " + location.latitude);
-                    tvLng.setText("Longitude: " + location.longitude);
-                    tvSnippet.setText(marker.getTitle());
-
-                    return markerView;
-                }
-            });
+        if (GoogleMapsModel.getMap() != null) {
+            GoogleMapsModel.getMap().setInfoWindowAdapter(new GoogleInfoWindowAdapter(markerView));
         }
-
     }
 
     @Override
@@ -147,7 +125,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         int id = item.getItemId();
 
         if (id == R.id.nav_about) {
-            Intent intent = new Intent(MapActivity.this, About.class);
+            Intent intent = new Intent(MapActivity.this, AboutActivity.class);
             startActivity(intent);
         }
 

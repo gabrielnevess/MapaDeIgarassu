@@ -1,16 +1,16 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Model;
 
-public class Location {
+public class LocationModel {
     private String name;
     private double longitude;
     private double latitude;
     private String address;
     private String description;
 
-    public Location() {
+    public LocationModel() {
     }
 
-    public Location(String name, double longitude, double latitude, String address, String description) {
+    public LocationModel(String name, double longitude, double latitude, String address, String description) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;

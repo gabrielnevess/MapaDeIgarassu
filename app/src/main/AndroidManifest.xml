@@ -20,7 +20,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".Activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
@@ -30,17 +30,17 @@
         </activity>
 
         <activity
-            android:name=".MapActivity"
+            android:name=".Activity.MapActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".IntroActivity"
+            android:name=".Activity.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Intro" />
         <activity
-            android:name=".SeeMore"
+            android:name=".Activity.SeeMoreActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".About"
+            android:name=".Activity.AboutActivity"
             android:screenOrientation="portrait" />
 
     </application>

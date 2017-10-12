@@ -1,13 +1,15 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Activity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.CheckBox;
 
 import agency.tango.materialintroscreen.MaterialIntroActivity;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
+import iphan.pibex.igarassu.ifpe.edu.br.R;
+import iphan.pibex.igarassu.ifpe.edu.br.Fragments.TermsConditionsSlideFragment;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
 
 public class IntroActivity extends MaterialIntroActivity {
 
@@ -43,7 +45,7 @@ public class IntroActivity extends MaterialIntroActivity {
 
         );
 
-        addSlide(new TermsConditionsSlide());
+        addSlide(new TermsConditionsSlideFragment());
 
     }
 
@@ -51,7 +53,7 @@ public class IntroActivity extends MaterialIntroActivity {
      * Método que verifica estado da activity de introdução
      */
     private void verifyIntroActivity() {
-        if (SharedPref.isIntroActivityShow(this)) {
+        if (SharedPrefUtil.isIntroActivityShow(this)) {
             Intent intent = new Intent(IntroActivity.this, MapActivity.class);
             startActivity(intent);
         }

@@ -1,28 +1,25 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Other;
 
 import android.content.Context;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import iphan.pibex.igarassu.ifpe.edu.br.Firebase.ConnectionFireBase;
+
+import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
 
 public class AddMarkerMapFirebase implements OnMapReadyCallback {
 
     private Context context;
 
-    public AddMarkerMapFirebase(Context context){
+    public AddMarkerMapFirebase(Context context) {
         this.context = context;
     }
 
-    public void loadMarker() {
+    public void onAddMarker() {
 
-        ConnectionFireBase.getReferenceFirebase()
+        ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
                 .addValueEventListener(new ValueEventListenerMarker(this.context));
-    }
-
-    public void onAddMarker() {
-        loadMarker();
     }
 
     @Override

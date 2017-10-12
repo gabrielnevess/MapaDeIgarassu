@@ -1,13 +1,9 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Firebase;
+package iphan.pibex.igarassu.ifpe.edu.br.Model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * Created by gabri on 20/06/2017.
- */
-
-public class ConnectionFireBase {
+public class ConnectionFireBaseModel {
 
     private static DatabaseReference referenceFirebase;
 

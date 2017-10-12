@@ -1,9 +1,11 @@
-package iphan.pibex.igarassu.ifpe.edu.br;
+package iphan.pibex.igarassu.ifpe.edu.br.Util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class SharedPref {
+import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
+
+public class SharedPrefUtil {
 
     /**
      * Método que pega o contexto da activity e retorna modo de armazenamento no xml.

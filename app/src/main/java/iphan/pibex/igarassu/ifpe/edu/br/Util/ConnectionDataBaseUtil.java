@@ -1,14 +1,14 @@
-package iphan.pibex.igarassu.ifpe.edu.br.DataBase;
+package iphan.pibex.igarassu.ifpe.edu.br.Util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
 
-public class ConnectionDataBase extends SQLiteOpenHelper {
+public class ConnectionDataBaseUtil extends SQLiteOpenHelper {
 
-    public ConnectionDataBase(Context context) {
+    public ConnectionDataBaseUtil(Context context) {
         super(context, Constants.BD_NOME, null, Constants.VERSAO_BD);
     }
 
