@@ -48,7 +48,7 @@ public class ValueEventListenerMarker implements ValueEventListener {
 
         }
 
-        ProgressDialogAlert.progressDialogDismiss();
+        ProgressDialogAlert.progressDialogDismiss(); //Fechando progress Dialog
 
     }
 

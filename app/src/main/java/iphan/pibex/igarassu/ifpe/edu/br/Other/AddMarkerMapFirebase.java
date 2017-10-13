@@ -19,7 +19,7 @@ public class AddMarkerMapFirebase implements OnMapReadyCallback {
 
     public void onAddMarker() {
 
-        ProgressDialogAlert.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados...");
+        ProgressDialogAlert.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
                 .addValueEventListener(new ValueEventListenerMarker(this.context));
