@@ -29,7 +29,7 @@ import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 
@@ -41,9 +41,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private View markerView;
     private final Context context;
 
-    public MapActivity(){
-        this.context = this;
-    }
+    public MapActivity() { this.context = this; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +78,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         GoogleMapsModel.setMap(googleMap);
 
         /*Verificação de tipos de mapa*/
-        if(Constants.MAP_TYPE_HYBRID == SharedPrefUtil.getTypeMaps(this)){
+        if (Constants.MAP_TYPE_HYBRID == SharedPreferencesUtil.getTypeMaps(this)) {
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
-        }else{
+        } else {
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
         }
 
@@ -119,7 +117,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 }
             }
-
 
         });
 

@@ -9,7 +9,7 @@ import agency.tango.materialintroscreen.MaterialIntroActivity;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Fragments.TermsConditionsSlideFragment;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPrefUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
 
 public class IntroActivity extends MaterialIntroActivity {
 
@@ -53,7 +53,7 @@ public class IntroActivity extends MaterialIntroActivity {
      * Método que verifica estado da activity de introdução
      */
     private void verifyIntroActivity() {
-        if (SharedPrefUtil.isIntroActivityShow(this)) {
+        if (SharedPreferencesUtil.isIntroActivityShow(this)) {
             Intent intent = new Intent(IntroActivity.this, MapActivity.class);
             startActivity(intent);
         }

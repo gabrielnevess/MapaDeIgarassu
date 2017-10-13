@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
 
-public class SharedPrefUtil {
+public class SharedPreferencesUtil {
 
     public static SharedPreferences.Editor editor;
 
