@@ -82,10 +82,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         /*Verificação de tipos de mapa*/
         if(Constants.MAP_TYPE_HYBRID == SharedPrefUtil.getTypeMaps(this)){
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
-
-        }else if(Constants.MAP_TYPE_TERRAIN == SharedPrefUtil.getTypeMaps(this)){
-            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_TERRAIN);
-
         }else{
             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
         }

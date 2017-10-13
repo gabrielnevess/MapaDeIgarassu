@@ -27,10 +27,6 @@ public class DialogTypeMapsFragment extends DialogFragment {
                         } else if (which == 1) {
                             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
                             SharedPrefUtil.setTypeMaps(context, Constants.MAP_TYPE_HYBRID);
-
-                        } else if (which == 2) {
-                            GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_TERRAIN);
-                            SharedPrefUtil.setTypeMaps(context, Constants.MAP_TYPE_TERRAIN);
                         }
                     }
                 });

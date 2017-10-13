@@ -3,6 +3,5 @@
     <string-array name="type_maps">
         <item>Normal</item>
         <item>Satélite</item>
-        <item>Terreno</item>
     </string-array>
 </resources>
