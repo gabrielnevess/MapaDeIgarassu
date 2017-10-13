@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import iphan.pibex.igarassu.ifpe.edu.br.Dialog.ProgressDialogAlert;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
@@ -21,6 +22,7 @@ public class ValueEventListenerMarker implements ValueEventListener {
     /**
      * Método de Listener(esse método ficará ouvindo um evento se por acaso ouver alguma mudança no firebase
      * por exemplo: a adição de um novo ponto).
+     *
      * @param context
      */
     public ValueEventListenerMarker(Context context) {
@@ -46,9 +48,12 @@ public class ValueEventListenerMarker implements ValueEventListener {
 
         }
 
+        ProgressDialogAlert.progressDialogDismiss();
+
     }
 
     @Override
-    public void onCancelled(DatabaseError error) {}
+    public void onCancelled(DatabaseError error) {
+    }
 
 }

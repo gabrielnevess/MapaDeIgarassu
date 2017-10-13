@@ -7,10 +7,16 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_about"
             android:title="Sobre" />
+
         <item
             android:id="@+id/nav_type_maps"
             android:icon="@drawable/ic_menu_type_maps"
             android:title="Tipos de Mapa" />
+
+        <item
+            android:id="@+id/nav_check_new_points"
+            android:icon="@drawable/ic_menu_check_new_points"
+            android:title="Checar se há novos pontos" />
 
     </group>
 
