@@ -6,14 +6,14 @@ import android.content.Context;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Dialog.ProgressDialogAlert;
+import iphan.pibex.igarassu.ifpe.edu.br.Dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
 
-public class AddMarkerMapFirebase implements OnMapReadyCallback {
+public class InvokeAddMarkerMapFirebaseOther implements OnMapReadyCallback {
 
     private Context context;
 
-    public AddMarkerMapFirebase(Context context) {
+    public InvokeAddMarkerMapFirebaseOther(Context context) {
         this.context = context;
     }
 
@@ -21,10 +21,10 @@ public class AddMarkerMapFirebase implements OnMapReadyCallback {
 
         ConnectionFireBaseModel.getReferenceFirebase().onDisconnect();
 
-        ProgressDialogAlert.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
+        InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
-                .addValueEventListener(new ValueEventListenerMarker(this.context));
+                .addValueEventListener(new ValueEventListenerMarkerOther(this.context));
     }
 
     @Override

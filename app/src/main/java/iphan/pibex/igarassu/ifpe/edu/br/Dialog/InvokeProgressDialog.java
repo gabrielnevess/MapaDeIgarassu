@@ -3,7 +3,7 @@ package iphan.pibex.igarassu.ifpe.edu.br.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-public class ProgressDialogAlert {
+public class InvokeProgressDialog {
 
     private static ProgressDialog progressDialog;
 

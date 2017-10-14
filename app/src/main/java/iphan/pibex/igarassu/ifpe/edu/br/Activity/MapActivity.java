@@ -24,8 +24,8 @@ import android.view.View;
 import iphan.pibex.igarassu.ifpe.edu.br.Adapter.GoogleInfoWindowAdapter;
 import iphan.pibex.igarassu.ifpe.edu.br.Fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Other.AddMarkerMapDataBase;
-import iphan.pibex.igarassu.ifpe.edu.br.Other.AddMarkerMapFirebase;
+import iphan.pibex.igarassu.ifpe.edu.br.Other.InvokeAddMarkerMapDataBaseOther;
+import iphan.pibex.igarassu.ifpe.edu.br.Other.InvokeAddMarkerMapFirebaseOther;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
@@ -38,8 +38,8 @@ import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    private AddMarkerMapFirebase addMarkerMapFirebase;
-    private AddMarkerMapDataBase addMarkerMapDataBase;
+    private InvokeAddMarkerMapFirebaseOther invokeAddMarkerMapFirebaseOther;
+    private InvokeAddMarkerMapDataBaseOther invokeAddMarkerMapDataBaseOther;
     private View markerView;
     private final Context context;
 
@@ -74,8 +74,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         /*Inflate para o pop-up dos markers(Janela em cima do marker)*/
         this.markerView = getLayoutInflater().inflate(R.layout.marker_view, null);
 
-        addMarkerMapFirebase = new AddMarkerMapFirebase(this);
-        addMarkerMapDataBase = new AddMarkerMapDataBase(this);
+        invokeAddMarkerMapFirebaseOther = new InvokeAddMarkerMapFirebaseOther(this);
+        invokeAddMarkerMapDataBaseOther = new InvokeAddMarkerMapDataBaseOther(this);
 
     }
 
@@ -92,10 +92,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         if (SharedPreferencesUtil.isNewPoints(this)) {
-            addMarkerMapFirebase.onAddMarker();
+            invokeAddMarkerMapFirebaseOther.onAddMarker();
             SharedPreferencesUtil.isNewPoints(this, false);
         } else {
-            addMarkerMapDataBase.onAddMarker();
+            invokeAddMarkerMapDataBaseOther.onAddMarker();
         }
 
         GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
@@ -160,7 +160,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             DialogTypeMapsFragment.alertDialog(this);
 
         } else if (id == R.id.nav_check_new_points) {
-            addMarkerMapFirebase.onAddMarker(); /*Adicionando Marker no mapa*/
+            invokeAddMarkerMapFirebaseOther.onAddMarker(); /*Adicionando MarkerOther no mapa*/
             SharedPreferencesUtil.isNewPoints(this, false); /* false, há novos pontos */
         }
 
