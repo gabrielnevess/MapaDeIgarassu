@@ -1,4 +1,4 @@
 <resources>
     <!-- chave do mapa-->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAqWQQCpG21aZM39UC3X54XV4_GQVepLTI</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCqUgk2Ia5gbwF_AMyKYYEOdSh3CYAsKUo</string>
 </resources>
