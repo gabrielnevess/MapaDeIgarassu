@@ -60,4 +60,26 @@ public class SharedPreferencesUtil {
         return getPref(context).getInt("typeMaps", 0);
     }
 
+
+    /**
+     * Método para setar true se há novos pontos no mapa
+     * @param context
+     * @param status
+     */
+    public static void isNewPoints(Context context, boolean status){
+        editor = getPref(context).edit();
+        editor.putBoolean("newPoints", status);
+        editor.commit();
+    }
+
+    /**
+     * Método para pegar o true ou false se há novos pontos no mapa
+     * @param context
+     * @return status
+     */
+    public static boolean isNewPoints(Context context){
+        return getPref(context).getBoolean("newPoints", true);
+    }
+
+
 }

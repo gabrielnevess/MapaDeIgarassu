@@ -14,18 +14,12 @@ public class ConnectionDataBaseUtil extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + Constants.TABLE + " ( "+
-                Constants.ID + " integer primary key autoincrement, "+
-                Constants.NAME + " text not null, " +
-                Constants.LONGITUDE + " double not null, " +
-                Constants.LATITUDE + " double not null, " +
-                Constants.ADDRESS + " text not null, " +
-                Constants.DESCRIPTION + " text not null" + ")");
+        db.execSQL(Constants.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table " + Constants.TABLE + ";");
+        db.execSQL(Constants.DROP_TABLE);
         onCreate(db);
     }
 

@@ -14,6 +14,17 @@ public class Constants {
     public static final String LATITUDE = "latitude";
     public static final String ADDRESS = "address";
     public static final String DESCRIPTION = "description";
+    public static final String CREATE_TABLE =
+            "create table " + TABLE + " ( "+
+            ID + " integer primary key autoincrement, "+
+            NAME + " text not null, " +
+            LONGITUDE + " double not null, " +
+            LATITUDE + " double not null, " +
+            ADDRESS + " text not null, " +
+            DESCRIPTION + " text not null" + ")";
+
+    public static final String DROP_TABLE = "drop table "+TABLE+";";
+    public static final String SELECT_ALL = "select * from "+TABLE;
 
     //constantes para os tipos de mapa
     public static final int MAP_TYPE_NONE = 0;

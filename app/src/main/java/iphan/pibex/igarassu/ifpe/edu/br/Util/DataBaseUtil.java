@@ -8,15 +8,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
 
-public class DataBaseUtil {
+public class DataBaseUtil extends ConnectionDataBaseUtil{
 
-    private SQLiteDatabase database;
+    protected SQLiteDatabase database;
 
     public DataBaseUtil(Context context) {
+        super(context);
         ConnectionDataBaseUtil db = new ConnectionDataBaseUtil(context);
         database = db.getWritableDatabase();
+    }
+
+    public void dropTable(){
+        database.execSQL(Constants.DROP_TABLE);
+        onCreate(database);
     }
 
     public void insertLocation(LocationModel locationModel) {
@@ -46,5 +53,4 @@ public class DataBaseUtil {
         return locationModel;
 
     }
-
 }
