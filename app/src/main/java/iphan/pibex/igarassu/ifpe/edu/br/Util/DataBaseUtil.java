@@ -1,19 +1,18 @@
 package iphan.pibex.igarassu.ifpe.edu.br.Util;
 
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+import android.database.sqlite.SQLiteStatement;
 
 import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
 
 public class DataBaseUtil extends ConnectionDataBaseUtil{
 
     protected SQLiteDatabase database;
+    protected SQLiteStatement stmt;
+    protected Cursor cursor;
 
     public DataBaseUtil(Context context) {
         super(context);
@@ -26,23 +25,20 @@ public class DataBaseUtil extends ConnectionDataBaseUtil{
         onCreate(database);
     }
 
-    public void insertLocation(LocationModel locationModel) {
+    public void insertLocation(LocationModel locationModel){
 
-        ContentValues values = new ContentValues();
-        values.put(Constants.NAME, locationModel.getName());
-        values.put(Constants.LONGITUDE, locationModel.getLongitude());
-        values.put(Constants.LATITUDE, locationModel.getLatitude());
-        values.put(Constants.ADDRESS, locationModel.getAddress());
-        values.put(Constants.DESCRIPTION, locationModel.getDescription());
-
-        Log.e("", "" + values.get(Constants.NAME));
-        database.insert(Constants.TABLE, null, values);
+        stmt = database.compileStatement(Constants.INSERT_ALL);
+        stmt.bindString(1, locationModel.getName());
+        stmt.bindDouble(2, locationModel.getLongitude());
+        stmt.bindDouble(3, locationModel.getLatitude());
+        stmt.bindString(4, locationModel.getAddress());
+        stmt.bindString(5, locationModel.getDescription());
+        stmt.executeInsert();
     }
 
     public LocationModel searchLocation(String name) {
 
-        @SuppressLint("Recycle")
-        Cursor cursor = database.query(Constants.TABLE, new String[]{Constants.NAME, Constants.ADDRESS, Constants.DESCRIPTION}, Constants.NAME + " = \'" + name + "\' ", null, null, null, null);
+        cursor = database.query(Constants.TABLE, new String[]{Constants.NAME, Constants.ADDRESS, Constants.DESCRIPTION}, Constants.NAME + " = \'" + name + "\' ", null, null, null, null);
         cursor.moveToNext();
 
         LocationModel locationModel = new LocationModel();
@@ -51,6 +47,11 @@ public class DataBaseUtil extends ConnectionDataBaseUtil{
         locationModel.setDescription(cursor.getString(2));
 
         return locationModel;
+    }
+
+    public void String(String name){
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{name});
 
     }
+
 }

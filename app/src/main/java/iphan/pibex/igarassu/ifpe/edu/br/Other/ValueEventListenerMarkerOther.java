@@ -6,7 +6,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.SQLException;
+
 import iphan.pibex.igarassu.ifpe.edu.br.Dialog.InvokeProgressDialog;
+import iphan.pibex.igarassu.ifpe.edu.br.Fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
@@ -15,13 +18,16 @@ import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
 public class ValueEventListenerMarkerOther implements ValueEventListener {
 
     private Context context;
+
     /**
      * Método de Listener(esse método ficará ouvindo um evento se por acaso ouver alguma mudança no firebase
      * por exemplo: a adição de um novo ponto).
      *
      * @param context
      */
-    public ValueEventListenerMarkerOther(Context context) { this.context = context; }
+    public ValueEventListenerMarkerOther(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {

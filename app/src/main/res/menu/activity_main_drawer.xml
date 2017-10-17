@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group>
 
@@ -17,7 +18,6 @@
             android:id="@+id/nav_check_new_points"
             android:icon="@drawable/ic_menu_check_new_points"
             android:title="Checar se há novos pontos" />
-
     </group>
 
 </menu>

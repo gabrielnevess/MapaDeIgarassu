@@ -25,6 +25,9 @@ public class Constants {
 
     public static final String DROP_TABLE = "drop table "+TABLE+";";
     public static final String SELECT_ALL = "select * from "+TABLE;
+    public static final String INSERT_ALL = "insert into "+TABLE+"("
+            +NAME+","+LONGITUDE+","+LATITUDE+","+ADDRESS+","+DESCRIPTION+") values(?, ?, ?, ?, ?)";
+    public static final String SELECT_FROM_NAME = "select * from "+TABLE+" where "+NAME+" = like %?%";
 
     //constantes para os tipos de mapa
     public static final int MAP_TYPE_NONE = 0;
