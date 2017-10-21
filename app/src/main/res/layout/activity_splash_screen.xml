@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="iphan.pibex.igarassu.ifpe.edu.br.Activity.SplashScreenActivity">
+    tools:context="iphan.pibex.igarassu.ifpe.edu.br.ui.activity.SplashScreenActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"

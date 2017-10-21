@@ -1,14 +1,14 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Fragments;
+package iphan.pibex.igarassu.ifpe.edu.br.fragments;
 
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.util.SharedPreferencesUtil;
 
 /**
  * Método de AlertDialog para escolha do tipo do mapa

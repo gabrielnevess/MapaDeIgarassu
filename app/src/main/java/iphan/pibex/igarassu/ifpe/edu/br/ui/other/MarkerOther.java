@@ -1,10 +1,10 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Other;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
 
 public class MarkerOther {

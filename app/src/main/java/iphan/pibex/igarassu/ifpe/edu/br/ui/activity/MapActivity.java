@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Activity;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
 import android.annotation.TargetApi;
 import android.app.SearchManager;
@@ -25,16 +25,16 @@ import com.google.android.gms.maps.model.Marker;
 
 import android.view.View;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Adapter.GoogleInfoWindowAdapter;
-import iphan.pibex.igarassu.ifpe.edu.br.Fragments.DialogTypeMapsFragment;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Other.InvokeAddMarkerMapDataBaseOther;
-import iphan.pibex.igarassu.ifpe.edu.br.Other.InvokeAddMarkerMapFirebaseOther;
+import iphan.pibex.igarassu.ifpe.edu.br.adapter.GoogleInfoWindowAdapter;
+import iphan.pibex.igarassu.ifpe.edu.br.fragments.DialogTypeMapsFragment;
+import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.other.InvokeAddMarkerMapDataBaseOther;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.other.InvokeAddMarkerMapFirebaseOther;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
-import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.util.SharedPreferencesUtil;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
 

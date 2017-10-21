@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Other;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.database.Cursor;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
 
 public class InvokeAddMarkerMapDataBaseOther extends DataBaseUtil implements OnMapReadyCallback {
 

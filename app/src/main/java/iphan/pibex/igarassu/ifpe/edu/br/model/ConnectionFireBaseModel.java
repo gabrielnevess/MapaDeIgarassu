@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Model;
+package iphan.pibex.igarassu.ifpe.edu.br.model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

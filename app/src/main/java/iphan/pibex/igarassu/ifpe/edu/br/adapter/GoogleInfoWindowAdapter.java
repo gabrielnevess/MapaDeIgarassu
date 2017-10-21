@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Adapter;
+package iphan.pibex.igarassu.ifpe.edu.br.adapter;
 
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +25,7 @@ public class GoogleInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     /**
      * Método de Pop-up de cada marker
      * @param marker
-     * @return
+     * @return markerView
      */
     @Override
     public View getInfoContents(Marker marker) {

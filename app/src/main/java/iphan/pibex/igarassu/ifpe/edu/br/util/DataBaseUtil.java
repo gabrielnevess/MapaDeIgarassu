@@ -1,12 +1,12 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Util;
+package iphan.pibex.igarassu.ifpe.edu.br.util;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Constants.Constants;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 
 public class DataBaseUtil extends ConnectionDataBaseUtil{
 

@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Other;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
 
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.content.Context;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
-import iphan.pibex.igarassu.ifpe.edu.br.Dialog.InvokeProgressDialog;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
+import iphan.pibex.igarassu.ifpe.edu.br.dialog.InvokeProgressDialog;
+import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
 
 public class InvokeAddMarkerMapFirebaseOther implements OnMapReadyCallback {
 

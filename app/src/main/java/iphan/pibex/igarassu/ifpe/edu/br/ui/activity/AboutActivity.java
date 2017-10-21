@@ -1,7 +1,6 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Activity;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +29,7 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        textView = (TextView) findViewById(R.id.tv_information);
+        textView = (TextView) findViewById(R.id.tv_description);
         textView.setText("Projeto de Extensão do Instituto Federal de Pernambuco - Campus Igarassu\n\n"+
                 "Desenvolvedores:\n" +
                 "Gabriel Lima Gonçalves da Silva\n" +

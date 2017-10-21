@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Other;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
 import android.content.Context;
 
@@ -6,14 +6,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.SQLException;
-
-import iphan.pibex.igarassu.ifpe.edu.br.Dialog.InvokeProgressDialog;
-import iphan.pibex.igarassu.ifpe.edu.br.Fragments.DialogTypeMapsFragment;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.ConnectionFireBaseModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.LocationModel;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.DataBaseUtil;
-import iphan.pibex.igarassu.ifpe.edu.br.Model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.dialog.InvokeProgressDialog;
+import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
+import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 
 public class ValueEventListenerMarkerOther implements ValueEventListener {
 

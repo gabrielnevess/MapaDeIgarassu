@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Model;
+package iphan.pibex.igarassu.ifpe.edu.br.model;
 
 public class LocationModel {
     private String name;

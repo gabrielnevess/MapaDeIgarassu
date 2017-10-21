@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Model;
+package iphan.pibex.igarassu.ifpe.edu.br.model;
 
 import com.google.android.gms.maps.GoogleMap;
 

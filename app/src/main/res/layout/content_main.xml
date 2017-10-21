@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="iphan.pibex.igarassu.ifpe.edu.br.Activity.MapActivity"
+    tools:context="iphan.pibex.igarassu.ifpe.edu.br.ui.activity.MapActivity"
     tools:showIn="@layout/app_bar_main">
 
     <fragment

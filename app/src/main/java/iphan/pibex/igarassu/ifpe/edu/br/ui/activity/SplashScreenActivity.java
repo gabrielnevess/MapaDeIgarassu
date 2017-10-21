@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Activity;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Fragments;
+package iphan.pibex.igarassu.ifpe.edu.br.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import agency.tango.materialintroscreen.SlideFragment;
-import iphan.pibex.igarassu.ifpe.edu.br.Activity.MapActivity;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.activity.MapActivity;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.util.SharedPreferencesUtil;
 
 public class TermsConditionsSlideFragment extends SlideFragment {
 

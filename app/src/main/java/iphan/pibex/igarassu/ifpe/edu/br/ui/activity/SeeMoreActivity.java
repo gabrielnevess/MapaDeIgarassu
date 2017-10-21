@@ -1,10 +1,12 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Activity;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -35,10 +37,13 @@ public class SeeMoreActivity extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(name);
 
-        TextView tv_information = (TextView) findViewById(R.id.tv_information);
-        tv_information.setText("Endereço: " + address
-                + "\n" + "Descrição: " + description
-        );
+        TextView tv_address = (TextView) findViewById(R.id.tv_description);
+        tv_address.setText(Html.fromHtml("<b>Endereço:</b> "
+                + "<br> " + address
+                + "<br> <br>" +
+                "<b>Descrição:</b> "
+                + "<br>" + description
+        ));
 
         toolbarTextAppearance();
 

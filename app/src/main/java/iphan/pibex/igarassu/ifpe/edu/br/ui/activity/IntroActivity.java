@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.Activity;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import agency.tango.materialintroscreen.MaterialIntroActivity;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
-import iphan.pibex.igarassu.ifpe.edu.br.Fragments.TermsConditionsSlideFragment;
-import iphan.pibex.igarassu.ifpe.edu.br.Util.SharedPreferencesUtil;
+import iphan.pibex.igarassu.ifpe.edu.br.fragments.TermsConditionsSlideFragment;
+import iphan.pibex.igarassu.ifpe.edu.br.util.SharedPreferencesUtil;
 
 public class IntroActivity extends MaterialIntroActivity {
 

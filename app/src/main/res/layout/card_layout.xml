@@ -11,11 +11,10 @@
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/tv_information"
+            android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="TextView"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textSize="18sp" />
 
     </LinearLayout>
