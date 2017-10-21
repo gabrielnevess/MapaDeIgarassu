@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.adapter;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.adapter;
 
 import android.view.View;
 import android.widget.TextView;

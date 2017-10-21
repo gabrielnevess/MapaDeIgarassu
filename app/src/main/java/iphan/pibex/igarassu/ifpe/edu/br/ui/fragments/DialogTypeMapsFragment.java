@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.fragments;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.fragments;
 
 import android.app.AlertDialog;
 import android.app.DialogFragment;

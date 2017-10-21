@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.dialog;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.dialog;
 
 import android.app.ProgressDialog;
 import android.content.Context;

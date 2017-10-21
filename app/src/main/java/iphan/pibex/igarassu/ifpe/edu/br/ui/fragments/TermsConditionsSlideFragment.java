@@ -1,4 +1,4 @@
-package iphan.pibex.igarassu.ifpe.edu.br.fragments;
+package iphan.pibex.igarassu.ifpe.edu.br.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -25,8 +25,8 @@ import com.google.android.gms.maps.model.Marker;
 
 import android.view.View;
 
-import iphan.pibex.igarassu.ifpe.edu.br.adapter.GoogleInfoWindowAdapter;
-import iphan.pibex.igarassu.ifpe.edu.br.fragments.DialogTypeMapsFragment;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.adapter.GoogleInfoWindowAdapter;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.InvokeAddMarkerMapDataBaseOther;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.InvokeAddMarkerMapFirebaseOther;

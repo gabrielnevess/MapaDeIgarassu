@@ -6,7 +6,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import iphan.pibex.igarassu.ifpe.edu.br.dialog.InvokeProgressDialog;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
