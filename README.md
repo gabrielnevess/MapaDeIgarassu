@@ -1,13 +1,9 @@
 # Mapa de Igarassu - Versão Mobile
 
 
-<img src="https://imgur.com/1b0DNFf.png" width="216" height="384" />
-
-
+<img src="https://imgur.com/1b0DNFf.png" width="216" height="384" />  <img src="https://imgur.com/g29amdL.png" width="216" height="384" />  <img src="https://imgur.com/5hSBoj5.png" width=216 height="384" /> 
 
 ### Projeto de Extensão PIBEX - Mapa e Jogo da Memória do Patrimônio de Igarassu
-
-
 
 ### Introdução
 
