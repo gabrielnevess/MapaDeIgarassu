@@ -6,31 +6,43 @@ import android.content.Context;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
+import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
 
-public class InvokeAddMarkerMapFirebaseOther implements OnMapReadyCallback {
+public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
 
     private Context context;
+    private DataBaseUtil dataBaseUtil;
 
-    public InvokeAddMarkerMapFirebaseOther(Context context) {
+    public InvokeAddMarkerMapOther(Context context) {
         this.context = context;
+        dataBaseUtil = new DataBaseUtil(context);
     }
 
-    public void onAddMarker() {
+    public void onAddMarkerFirebase() {
 
         ConnectionFireBaseModel.getReferenceFirebase().onDisconnect();
 
         InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
-                .addValueEventListener(new ValueEventListenerMarkerOther(this.context));
+                .addValueEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
+    }
+
+
+    public void onAddMarkerSqlite(){
+        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
+        this.dataBaseUtil.addMarkerSqlite();
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        onAddMarker();
+        onAddMarkerFirebase();
     }
+
+
 
 }
 

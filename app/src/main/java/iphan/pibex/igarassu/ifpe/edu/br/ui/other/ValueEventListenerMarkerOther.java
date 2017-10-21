@@ -1,7 +1,5 @@
 package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
-import android.content.Context;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -14,16 +12,16 @@ import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 
 public class ValueEventListenerMarkerOther implements ValueEventListener {
 
-    private Context context;
+    private DataBaseUtil dataBaseUtil;
 
     /**
      * Método de Listener(esse método ficará ouvindo um evento se por acaso ouver alguma mudança no firebase
      * por exemplo: a adição de um novo ponto).
      *
-     * @param context
      */
-    public ValueEventListenerMarkerOther(Context context) {
-        this.context = context;
+
+    public ValueEventListenerMarkerOther(DataBaseUtil dataBaseUtil) {
+        this.dataBaseUtil = dataBaseUtil;
     }
 
     @Override
@@ -32,13 +30,12 @@ public class ValueEventListenerMarkerOther implements ValueEventListener {
         Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
 
-        DataBaseUtil dataBaseUtil = new DataBaseUtil(this.context);
-        dataBaseUtil.dropTable(); //drop table
+        this.dataBaseUtil.dropTable(); //drop table
 
         for (DataSnapshot dataSnapshot1 : dataSnapshots) { /*Inserindo pontos ao mapa*/
 
             final LocationModel local = dataSnapshot1.getValue(LocationModel.class);
-            dataBaseUtil.insertLocation(local); /*Inserindo pontos marcados no mapa para o banco local*/
+            this.dataBaseUtil.insertLocation(local); /*Inserindo pontos marcados no mapa para o banco local*/
             MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
 
         }
