@@ -1,7 +1,7 @@
 # Mapa de Igarassu - Versão Mobile
 
 
-<img src="https://imgur.com/a/OItRX" width="216" height="384" />
+<img src="https://imgur.com/1b0DNFf.png" width="216" height="384" />
 
 
 
