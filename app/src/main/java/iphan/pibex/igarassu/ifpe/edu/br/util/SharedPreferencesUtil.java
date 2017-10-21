@@ -14,7 +14,7 @@ public class SharedPreferencesUtil {
      * @param context
      * @return
      */
-    public static SharedPreferences getPref(Context context){
+    public static SharedPreferences sharedPreferences(Context context){
         return context.getSharedPreferences(Constants.PREF_NAME,Context.MODE_PRIVATE);
     }
 
@@ -25,7 +25,7 @@ public class SharedPreferencesUtil {
      * @param status
      */
     public static void updateIntroStatus(Context context, boolean status){
-        editor = getPref(context).edit();
+        editor = sharedPreferences(context).edit();
         editor.putBoolean("status", status);
         editor.commit();
 
@@ -37,7 +37,7 @@ public class SharedPreferencesUtil {
      * @return
      */
     public static boolean isIntroActivityShow(Context context){
-        return getPref(context).getBoolean("status", false);
+        return sharedPreferences(context).getBoolean("status", false);
     }
 
     /**
@@ -46,7 +46,7 @@ public class SharedPreferencesUtil {
      * @param type
      */
     public static void setTypeMaps(Context context, int type){
-        editor = getPref(context).edit();
+        editor = sharedPreferences(context).edit();
         editor.putInt("typeMaps", type);
         editor.commit();
     }
@@ -57,7 +57,7 @@ public class SharedPreferencesUtil {
      * @return
      */
     public static int getTypeMaps(Context context){
-        return getPref(context).getInt("typeMaps", 0);
+        return sharedPreferences(context).getInt("typeMaps", 0);
     }
 
 
@@ -67,7 +67,7 @@ public class SharedPreferencesUtil {
      * @param status
      */
     public static void isNewPoints(Context context, boolean status){
-        editor = getPref(context).edit();
+        editor = sharedPreferences(context).edit();
         editor.putBoolean("newPoints", status);
         editor.commit();
     }
@@ -78,7 +78,7 @@ public class SharedPreferencesUtil {
      * @return status
      */
     public static boolean isNewPoints(Context context){
-        return getPref(context).getBoolean("newPoints", true);
+        return sharedPreferences(context).getBoolean("newPoints", true);
     }
 
 
