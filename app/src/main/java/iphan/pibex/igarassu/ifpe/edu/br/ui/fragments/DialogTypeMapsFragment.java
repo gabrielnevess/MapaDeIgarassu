@@ -20,11 +20,11 @@ public class DialogTypeMapsFragment extends DialogFragment {
         builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.type_maps)
                 .setItems(R.array.type_maps, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (id == 0) {
                             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_NORMAL);
                             SharedPreferencesUtil.setTypeMaps(context, Constants.MAP_TYPE_NORMAL);
-                        } else if (which == 1) {
+                        } else if (id == 1) {
                             GoogleMapsModel.getMap().setMapType(Constants.MAP_TYPE_HYBRID);
                             SharedPreferencesUtil.setTypeMaps(context, Constants.MAP_TYPE_HYBRID);
                         }
