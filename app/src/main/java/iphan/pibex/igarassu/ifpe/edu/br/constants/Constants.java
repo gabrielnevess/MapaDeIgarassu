@@ -5,8 +5,8 @@ import com.google.android.gms.maps.model.LatLng;
 public class Constants {
 
     //constante Banco de Dados
-    public static final String BD_NOME = "MapaDeIgarassu";
-    public static final int VERSAO_BD = 5;
+    public static final String NAME_DB = "MapaDeIgarassu";
+    public static final int VERSION_DB = 5;
     public static final String TABLE = "location";
     public static final String ID = "_id";
     public static final String NAME = "name";
