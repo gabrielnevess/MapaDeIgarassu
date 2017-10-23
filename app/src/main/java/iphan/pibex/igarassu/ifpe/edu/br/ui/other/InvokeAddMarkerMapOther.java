@@ -22,9 +22,7 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
     }
 
     public void onAddMarkerFirebase() {
-
-        ConnectionFireBaseModel.getReferenceFirebase().onDisconnect();
-
+        
         InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
@@ -41,7 +39,6 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         onAddMarkerFirebase();
     }
-
 
 
 }
