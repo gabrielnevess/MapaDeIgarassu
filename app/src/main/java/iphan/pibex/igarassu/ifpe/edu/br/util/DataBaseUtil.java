@@ -38,6 +38,25 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         stmt.executeInsert();
     }
 
+    public void updateLocation(LocationModel locationModel){
+        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteStatement stmt = db.compileStatement(Constants.UPDATE_TABLE_LOCATION);
+        stmt.bindString(1, locationModel.getName());
+        stmt.bindDouble(2, locationModel.getLongitude());
+        stmt.bindDouble(3, locationModel.getLatitude());
+        stmt.bindString(4, locationModel.getAddress());
+        stmt.bindString(5, locationModel.getDescription());
+        stmt.bindLong(6, locationModel.getId());
+        stmt.execute();
+    }
+
+    public void deleteLocation(int locationId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteStatement stmt = db.compileStatement(Constants.DELETE_LOCATION);
+        stmt.bindLong(1, locationId);
+        stmt.execute();
+    }
+
     public LocationModel searchLocation(String name) {
 
         cursor = database.query(Constants.TABLE, new String[]{Constants.NAME, Constants.ADDRESS, Constants.DESCRIPTION}, Constants.NAME + " = \'" + name + "\' ", null, null, null, null);

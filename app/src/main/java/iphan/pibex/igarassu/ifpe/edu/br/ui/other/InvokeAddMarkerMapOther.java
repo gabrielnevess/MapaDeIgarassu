@@ -2,6 +2,7 @@ package iphan.pibex.igarassu.ifpe.edu.br.ui.other;
 
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,7 +27,7 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
         InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
-                .addValueEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
+                .addChildEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
     }
 
 
