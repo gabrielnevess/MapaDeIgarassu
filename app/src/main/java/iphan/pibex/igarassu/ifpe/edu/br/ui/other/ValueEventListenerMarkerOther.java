@@ -7,6 +7,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
@@ -38,18 +40,19 @@ public class ValueEventListenerMarkerOther implements ChildEventListener {
         LocationModel local = dataSnapshot.getValue(LocationModel.class);
         this.dataBaseUtil.insertLocation(local); //Inserindo pontos marcados no mapa para o banco local
         MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
-        InvokeProgressDialog.progressDialogDismiss();
 
     }
 
     @Override
     public void onChildChanged(DataSnapshot dataSnapshot, String s) { //atualizando marcadores da tabela Location
 
+//        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
         Log.e("", "ID ATUALIZADO: " + dataSnapshot.getKey());
         LocationModel local = dataSnapshot.getValue(LocationModel.class);
         this.dataBaseUtil.updateLocation(local); //Inserindo pontos marcados no mapa para o banco local
         MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
-        InvokeProgressDialog.progressDialogDismiss();
+
+
     }
 
     @Override
@@ -61,11 +64,9 @@ public class ValueEventListenerMarkerOther implements ChildEventListener {
     }
 
     @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-    }
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
     @Override
-    public void onCancelled(DatabaseError error) {
-    }
+    public void onCancelled(DatabaseError error) { }
 
 }

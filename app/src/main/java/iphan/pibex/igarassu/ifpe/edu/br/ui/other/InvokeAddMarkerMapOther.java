@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.firebase.database.ChildEventListener;
 
 import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
@@ -28,6 +29,7 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
                 .addChildEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
+//        ConnectionFireBaseModel.getReferenceFirebase().removeEventListener( listener );
     }
 
 

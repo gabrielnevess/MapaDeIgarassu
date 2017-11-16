@@ -9,8 +9,7 @@ public class LocationModel {
     private String address;
     private String description;
 
-    public LocationModel() {
-    }
+    public LocationModel() { }
 
     public LocationModel(String name, double longitude, double latitude, String address, String description) {
         this.name = name;
