@@ -24,16 +24,18 @@ public class Constants {
             ADDRESS + " text not null, " +
             DESCRIPTION + " text not null" + ")";
 
-    public static final String DROP_TABLE = "drop table "+TABLE+";";
+    public static final String DROP_TABLE = "drop table " + TABLE;
 
     public static final String SELECT_ALL = "select * from "+TABLE;
 
-    public static final String INSERT_ALL = "insert into "+TABLE+"("
-            +NAME+","+LONGITUDE+","+LATITUDE+","+ADDRESS+","+DESCRIPTION+") values(?, ?, ?, ?, ?)";
+    public static final String INSERT_ALL = "insert into " + TABLE + "("
+            + NAME + "," + LONGITUDE + "," + LATITUDE + "," + ADDRESS + "," + DESCRIPTION + ") values(?, ?, ?, ?, ?)";
 
-    public static final String SELECT_FROM_NAME = "select * from "+TABLE+" where "+NAME+" like ?";
+    public static final String SELECT_FROM_NAME_LIKE = "select * from " + TABLE + " where " + NAME + " like ?";
 
-    public static final String UPDATE_TABLE_LOCATION = "update " + TABLE + " set " + NAME + " = ?, "+ LONGITUDE + " = ?, " + LATITUDE + " = ?, " +
+    public static final String SELECT_FROM_NAME = "select * from " + TABLE + " where " + NAME + " = ?" + "order by "+ ID +" desc";
+
+    public static final String UPDATE_TABLE_LOCATION = "update " + TABLE + " set " + NAME + " = ?, " + LONGITUDE + " = ?, " + LATITUDE + " = ?, " +
             ADDRESS + " = ?, " + DESCRIPTION + " = ? " + "where " + ID + " = ? ";
 
     public static final String DELETE_LOCATION = "delete from " + TABLE + " where " + ID + " = ?";

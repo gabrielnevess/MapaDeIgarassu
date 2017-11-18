@@ -34,6 +34,7 @@ public class ValueEventListenerMarkerOther implements ValueEventListener {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
 
+
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
         this.dataBaseUtil.dropTable();
         Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
@@ -46,8 +47,8 @@ public class ValueEventListenerMarkerOther implements ValueEventListener {
 
         }
 
-        InvokeProgressDialog.progressDialogDismiss();
         ConnectionFireBaseModel.getReferenceFirebase().onDisconnect();
+        InvokeProgressDialog.progressDialogDismiss();
 
     }
 

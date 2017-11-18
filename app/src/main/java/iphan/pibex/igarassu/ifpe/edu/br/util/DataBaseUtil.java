@@ -62,36 +62,45 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         stmt.execute();
     }
 
-    public LocationModel searchLocation(String name) {
+    public LocationModel getLocation(String searchLocation) {
 
-        cursor = database.query(Constants.TABLE, new String[]{Constants.NAME, Constants.ADDRESS, Constants.DESCRIPTION}, Constants.NAME + " = \'" + name + "\' ", null, null, null, null);
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{ searchLocation });
         cursor.moveToNext();
 
+        int name = cursor.getColumnIndex(Constants.NAME);
+        int address = cursor.getColumnIndex(Constants.ADDRESS);
+        int description = cursor.getColumnIndex(Constants.DESCRIPTION);
+
+        Log.d("name"," "+cursor.getString(name));
+        Log.d("longitude"," "+cursor.getString(address));
+        Log.d("latitude"," "+cursor.getString(description));
+
+
         LocationModel locationModel = new LocationModel();
-        locationModel.setName(cursor.getString(0));
-        locationModel.setAddress(cursor.getString(1));
-        locationModel.setDescription(cursor.getString(2));
+        locationModel.setName(cursor.getString(name));
+        locationModel.setAddress(cursor.getString(address));
+        locationModel.setDescription(cursor.getString(description));
 
         return locationModel;
     }
 
-    public void getLinksToSearchResults(String name) {
+    public void searchLocation(String searchLocation) {
 
-        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{name + "%"});
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME_LIKE, new String[]{ searchLocation + "%" });
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
 
         while (cursor.moveToNext()) {
 
 //          int id = cursor.getColumnIndex(Constants.ID);
-            int name1 = cursor.getColumnIndex(Constants.NAME);
+            int name = cursor.getColumnIndex(Constants.NAME);
             int longitude = cursor.getColumnIndex(Constants.LONGITUDE);
             int latitude = cursor.getColumnIndex(Constants.LATITUDE);
 
-            Log.d("name"," "+cursor.getString(name1));
+            Log.d("name"," "+cursor.getString(name));
             Log.d("longitude"," "+cursor.getDouble(longitude));
             Log.d("latitude"," "+cursor.getDouble(latitude));
 
-            MarkerOther.marker(cursor.getString(name1), cursor.getDouble(latitude), cursor.getDouble(longitude)); //add marker
+            MarkerOther.marker(cursor.getString(name), cursor.getDouble(latitude), cursor.getDouble(longitude)); //add marker
 
         }
 

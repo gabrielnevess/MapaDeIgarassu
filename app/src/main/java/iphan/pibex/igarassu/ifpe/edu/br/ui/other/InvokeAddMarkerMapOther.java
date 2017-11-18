@@ -24,15 +24,16 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
     }
 
     public void onAddMarkerFirebase() {
-        
+
         InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
-                .addValueEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
+                .orderByKey()
+                .addListenerForSingleValueEvent(new ValueEventListenerMarkerOther(this.dataBaseUtil));
     }
 
 
-    public void onAddMarkerSqlite(){
+    public void onAddMarkerSqlite() {
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
         this.dataBaseUtil.addMarkerSqlite();
     }

@@ -29,6 +29,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import iphan.pibex.igarassu.ifpe.edu.br.model.ConnectionFireBaseModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.adapter.GoogleInfoWindowAdapter;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.fragments.DialogTypeMapsFragment;
@@ -123,7 +124,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 DataBaseUtil dataBaseUtil = new DataBaseUtil(context); /*Instância da base de dados local*/
 
                 String name = marker.getTitle();
-                LocationModel locationModel = dataBaseUtil.searchLocation(name);
+                LocationModel locationModel = dataBaseUtil.getLocation(name);
 
                 if (name.equals(locationModel.getName())) {
                     Intent intent = new Intent(MapActivity.this, SeeMoreActivity.class);
@@ -209,7 +210,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 Log.d("Escrito", " "+s);
                 DataBaseUtil dataBaseUtil = new DataBaseUtil(context);
-                dataBaseUtil.getLinksToSearchResults(s);
+                dataBaseUtil.searchLocation(s);
                 return false;
 
             }
