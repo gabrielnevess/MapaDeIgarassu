@@ -17,7 +17,7 @@ import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 
 import static java.lang.Integer.parseInt;
 
-public class ValueEventListenerMarkerOther implements ChildEventListener {
+public class ValueEventListenerMarkerOther implements ValueEventListener {
 
     private DataBaseUtil dataBaseUtil;
 
@@ -28,43 +28,28 @@ public class ValueEventListenerMarkerOther implements ChildEventListener {
 
     public ValueEventListenerMarkerOther(DataBaseUtil dataBaseUtil) {
         this.dataBaseUtil = dataBaseUtil;
+    }
+
+
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot) {
+
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
-        //this.dataBaseUtil.dropTable(); //drop table
-    }
+        this.dataBaseUtil.dropTable();
+        Iterable<DataSnapshot> dataSnapshots = dataSnapshot.getChildren();
 
+        for(DataSnapshot dataSnapshot1 :  dataSnapshots){
 
-    @Override
-    public void onChildAdded(DataSnapshot dataSnapshot, String s) { //inserindo marcadores na tabela Location
+            LocationModel local = dataSnapshot1.getValue(LocationModel.class);
+            this.dataBaseUtil.insertLocation(local); //Inserindo pontos marcados no mapa para o banco local
+            MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
 
-        Log.e("", "ID INSERIDO: " + dataSnapshot.getKey());
-        LocationModel local = dataSnapshot.getValue(LocationModel.class);
-        this.dataBaseUtil.insertLocation(local); //Inserindo pontos marcados no mapa para o banco local
-        MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
+        }
 
-    }
-
-    @Override
-    public void onChildChanged(DataSnapshot dataSnapshot, String s) { //atualizando marcadores da tabela Location
-
-//        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
-        Log.e("", "ID ATUALIZADO: " + dataSnapshot.getKey());
-        LocationModel local = dataSnapshot.getValue(LocationModel.class);
-        this.dataBaseUtil.updateLocation(local); //Inserindo pontos marcados no mapa para o banco local
-        MarkerOther.marker(local.getName(), local.getLatitude(), local.getLongitude()); //Add marker
-
+        InvokeProgressDialog.progressDialogDismiss();
+        ConnectionFireBaseModel.getReferenceFirebase().onDisconnect();
 
     }
-
-    @Override
-    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-        LocationModel local = dataSnapshot.getValue(LocationModel.class);
-        this.dataBaseUtil.deleteLocation(local.getId());
-
-    }
-
-    @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
     @Override
     public void onCancelled(DatabaseError error) { }

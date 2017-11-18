@@ -28,8 +28,7 @@ public class InvokeAddMarkerMapOther implements OnMapReadyCallback {
         InvokeProgressDialog.progressDialogStart(context, "Aguarde", "Os pontos estão sendo carregados..."); //Exibindo janela de progresso
         ConnectionFireBaseModel.getReferenceFirebase()
                 .child("locations")
-                .addChildEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
-//        ConnectionFireBaseModel.getReferenceFirebase().removeEventListener( listener );
+                .addValueEventListener(new ValueEventListenerMarkerOther(this.dataBaseUtil));
     }
 
 
