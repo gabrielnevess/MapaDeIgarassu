@@ -6,7 +6,7 @@ public class Constants {
 
     //constante Banco de Dados
     public static final String NAME_DB = "MapaDeIgarassu";
-    public static final int VERSION_DB = 5;
+    public static final int VERSION_DB = 1;
     public static final String TABLE = "location";
     public static final String ID = "_id";
     public static final String NAME = "name";
