@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -25,11 +26,16 @@ import com.google.android.gms.maps.model.Marker;
 
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import iphan.pibex.igarassu.ifpe.edu.br.ui.adapter.GoogleInfoWindowAdapter;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.dialog.InvokeProgressDialog;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.InvokeAddMarkerMapOther;
 import iphan.pibex.igarassu.ifpe.edu.br.R;
+import iphan.pibex.igarassu.ifpe.edu.br.ui.other.MarkerOther;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
@@ -191,18 +197,21 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
-        search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+        search.setSearchableInfo(manager != null ? manager.getSearchableInfo(getComponentName()) : null);
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+            public boolean onQueryTextSubmit(String s) { return false; }
 
             @Override
             public boolean onQueryTextChange(String s) {
+
+                Log.d("Escrito", " "+s);
+                DataBaseUtil dataBaseUtil = new DataBaseUtil(context);
+                dataBaseUtil.getLinksToSearchResults(s);
                 return false;
+
             }
 
         });

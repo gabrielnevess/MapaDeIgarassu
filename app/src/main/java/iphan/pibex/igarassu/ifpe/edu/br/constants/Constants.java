@@ -14,6 +14,7 @@ public class Constants {
     public static final String LATITUDE = "latitude";
     public static final String ADDRESS = "address";
     public static final String DESCRIPTION = "description";
+
     public static final String CREATE_TABLE =
             "create table " + TABLE + " ( "+
             ID + " integer primary key autoincrement, "+
@@ -24,12 +25,17 @@ public class Constants {
             DESCRIPTION + " text not null" + ")";
 
     public static final String DROP_TABLE = "drop table "+TABLE+";";
+
     public static final String SELECT_ALL = "select * from "+TABLE;
+
     public static final String INSERT_ALL = "insert into "+TABLE+"("
             +NAME+","+LONGITUDE+","+LATITUDE+","+ADDRESS+","+DESCRIPTION+") values(?, ?, ?, ?, ?)";
-    public static final String SELECT_FROM_NAME = "select * from "+TABLE+" where "+NAME+" = like %?%";
+
+    public static final String SELECT_FROM_NAME = "select * from "+TABLE+" where "+NAME+" like ?";
+
     public static final String UPDATE_TABLE_LOCATION = "update " + TABLE + " set " + NAME + " = ?, "+ LONGITUDE + " = ?, " + LATITUDE + " = ?, " +
             ADDRESS + " = ?, " + DESCRIPTION + " = ? " + "where " + ID + " = ? ";
+
     public static final String DELETE_LOCATION = "delete from " + TABLE + " where " + ID + " = ?";
 
     //constantes para os tipos de mapa

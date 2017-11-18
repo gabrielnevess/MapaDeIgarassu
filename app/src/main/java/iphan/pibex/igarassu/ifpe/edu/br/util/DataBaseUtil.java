@@ -5,8 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
+import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.MarkerOther;
 
@@ -38,7 +43,7 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         stmt.executeInsert();
     }
 
-    public void updateLocation(LocationModel locationModel){
+    public void updateLocation(LocationModel locationModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         SQLiteStatement stmt = db.compileStatement(Constants.UPDATE_TABLE_LOCATION);
         stmt.bindString(1, locationModel.getName());
@@ -50,7 +55,7 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         stmt.execute();
     }
 
-    public void deleteLocation(int locationId){
+    public void deleteLocation(int locationId) {
         SQLiteDatabase db = this.getWritableDatabase();
         SQLiteStatement stmt = db.compileStatement(Constants.DELETE_LOCATION);
         stmt.bindLong(1, locationId);
@@ -70,10 +75,28 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         return locationModel;
     }
 
-    public void String(String name) {
-        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{name});
+    public void getLinksToSearchResults(String name) {
+
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{name + "%"});
+        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
+
+        while (cursor.moveToNext()) {
+
+//          int id = cursor.getColumnIndex(Constants.ID);
+            int name1 = cursor.getColumnIndex(Constants.NAME);
+            int longitude = cursor.getColumnIndex(Constants.LONGITUDE);
+            int latitude = cursor.getColumnIndex(Constants.LATITUDE);
+
+            Log.d("name"," "+cursor.getString(name1));
+            Log.d("longitude"," "+cursor.getDouble(longitude));
+            Log.d("latitude"," "+cursor.getDouble(latitude));
+
+            MarkerOther.marker(cursor.getString(name1), cursor.getDouble(latitude), cursor.getDouble(longitude)); //add marker
+
+        }
 
     }
+
 
     public void addMarkerSqlite() {
         @SuppressLint("Recycle")
