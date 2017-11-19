@@ -106,7 +106,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             invokeAddMarkerMapOther.onAddMarkerFirebase();
             SharedPreferencesUtil.isNewPoints(this, false);
         } else {
-            invokeAddMarkerMapOther.onAddMarkerSqlite();
+            invokeAddMarkerMapOther.onAddMarkerSqlite(); //chamada do metodo onAddMarkerSqlite, isso fará que adicione os pontos
         }
 
         GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
@@ -122,12 +122,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                DataBaseUtil dataBaseUtil = new DataBaseUtil(context); /*Instância da base de dados local*/
+                DataBaseUtil dataBaseUtil = new DataBaseUtil(context); //Instância da base de dados local
 
-                String name = marker.getTitle();
-                locationModel = dataBaseUtil.getLocation(name);
+                String name = marker.getTitle(); //pegando nome do marker
+                locationModel = dataBaseUtil.getLocation(name); //query no sqlite passando nome
 
-                if (name.equals(locationModel.getName())) {
+                if (name.equals(locationModel.getName())) { //verificação se o nome do marcador é igual algum nome está no banco sqlite
                     Intent intent = new Intent(MapActivity.this, SeeMoreActivity.class);
                     Bundle b = new Bundle();
                     b.putString("name", locationModel.getName());
@@ -143,7 +143,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-    /*Método infoWindow, colocar pop-up para todos os marker*/
+    //Método infoWindow, colocar pop-up para todos os marker
     private void infoWindow() {
 
         if (GoogleMapsModel.getMap() != null) {
@@ -156,7 +156,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return false;
     }
 
-    /*Menu*/
+    //Menu
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -180,17 +180,23 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return true;
     }
 
-    //Método de back do botão do celular
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { //Método de back do botão do celular
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
+
             drawer.closeDrawer(GravityCompat.START);
+
         } else {
+
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             startActivity(intent);
+
         }
+
     }
 
     @SuppressLint("RestrictedApi")
@@ -213,7 +219,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 GoogleMapsModel.getMap().clear(); //limpar o mapa
                 GoogleMapsModel.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); //centraliza o mapa com animação
                 InvokeAddMarkerMapOther invokeAddMarkerMapOther = new InvokeAddMarkerMapOther(context); //instância de InvokeAddMarkerMapOther
-                invokeAddMarkerMapOther.onAddMarkerSqlite(); //chamada do metodo onAddMarkerSqlite, isso fará que adicione os pontos novamente
+                invokeAddMarkerMapOther.onAddMarkerSqlite(); //chamada do metodo onAddMarkerSqlite, isso fará que adicione os pontos
 
                 return true;
             }
