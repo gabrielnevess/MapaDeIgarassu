@@ -109,7 +109,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             invokeAddMarkerMapOther.onAddMarkerSqlite();
         }
 
-        GoogleMapsModel.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
+        GoogleMapsModel.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
         GoogleMapsModel.getMap().setOnMarkerClickListener(this); //Listener
 
         //Botões de Zoom
@@ -234,9 +234,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d("Escrito", " " + s);
                 final DataBaseUtil dataBaseUtil = new DataBaseUtil(context);
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, dataBaseUtil.searchLocation(s));
-                Log.d("adapterPosition", " " + adapter.getItem(0));
-                mSearchAutoComplete.setAdapter(adapter);
-                dataBaseUtil.searchLocation(s);
+                mSearchAutoComplete.setAdapter(adapter); //colocando titulos do marcadores na listView
+                dataBaseUtil.searchLocation(s); //pesquisando no banco sqlite pelo nome digitado
 
                 mSearchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
