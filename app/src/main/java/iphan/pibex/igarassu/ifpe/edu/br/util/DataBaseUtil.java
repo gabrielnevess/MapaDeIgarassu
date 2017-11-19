@@ -67,27 +67,38 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{ searchLocation });
         cursor.moveToNext();
 
+        int id = cursor.getColumnIndex(Constants.ID);
         int name = cursor.getColumnIndex(Constants.NAME);
+        int longitude = cursor.getColumnIndex(Constants.LONGITUDE);
+        int latitude = cursor.getColumnIndex(Constants.LATITUDE);
         int address = cursor.getColumnIndex(Constants.ADDRESS);
         int description = cursor.getColumnIndex(Constants.DESCRIPTION);
 
+        Log.d("id"," "+cursor.getString(id));
         Log.d("name"," "+cursor.getString(name));
-        Log.d("longitude"," "+cursor.getString(address));
-        Log.d("latitude"," "+cursor.getString(description));
+        Log.d("longitude"," "+cursor.getString(longitude));
+        Log.d("latitude"," "+cursor.getString(latitude));
+        Log.d("address"," "+cursor.getString(address));
+        Log.d("description"," "+cursor.getString(description));
 
 
         LocationModel locationModel = new LocationModel();
+        locationModel.setId(Integer.parseInt(cursor.getString(id)));
         locationModel.setName(cursor.getString(name));
+        locationModel.setLongitude(Double.parseDouble(cursor.getString(longitude)));
+        locationModel.setLatitude(Double.parseDouble(cursor.getString(latitude)));
         locationModel.setAddress(cursor.getString(address));
         locationModel.setDescription(cursor.getString(description));
 
         return locationModel;
     }
 
-    public void searchLocation(String searchLocation) {
+    public List<String> searchLocation(String searchLocation) {
 
         cursor = database.rawQuery(Constants.SELECT_FROM_NAME_LIKE, new String[]{ searchLocation + "%" });
         GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
+
+        List<String> locationModels = new ArrayList<>();
 
         while (cursor.moveToNext()) {
 
@@ -100,9 +111,15 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
             Log.d("longitude"," "+cursor.getDouble(longitude));
             Log.d("latitude"," "+cursor.getDouble(latitude));
 
+            locationModels.add(0, cursor.getString(name));
+//            locationModels.add(1, cursor.getString(longitude));
+//            locationModels.add(2, cursor.getString(longitude));
+
             MarkerOther.marker(cursor.getString(name), cursor.getDouble(latitude), cursor.getDouble(longitude)); //add marker
 
         }
+
+        return locationModels;
 
     }
 
