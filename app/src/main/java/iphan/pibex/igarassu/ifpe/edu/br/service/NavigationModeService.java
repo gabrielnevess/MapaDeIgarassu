@@ -41,7 +41,7 @@ public class NavigationModeService extends Service {
 
         Task task = new Task(this, startId);
         task.execute();
-        Toast.makeText(getApplicationContext(), "Iniciando Modo Navegação", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Modo Navegação Iniciado", Toast.LENGTH_LONG).show();
         return START_REDELIVER_INTENT;
 
     }
@@ -111,7 +111,7 @@ public class NavigationModeService extends Service {
 
 
         @SuppressLint("MissingPermission")
-        private double checkingMetersBetweenTwoPoints() {
+        private String checkingMetersBetweenTwoPoints() {
 
             List<NavigationModeModel> list;
             locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -131,7 +131,7 @@ public class NavigationModeService extends Service {
             }
 
 
-            return 0;
+            return null;
         }
 
 
@@ -162,10 +162,8 @@ public class NavigationModeService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        for (int i = 0, tam = tasks.size(); i < tam; i++) {
-            tasks.get(i).active = false;
-        }
-        Toast.makeText(getApplicationContext(), "Encerrando Modo Navegação", Toast.LENGTH_LONG).show();
+        for (int i = 0, tam = tasks.size(); i < tam; i++) { tasks.get(i).active = false; }
+        Toast.makeText(getApplicationContext(), "Modo Navegação Encerrado", Toast.LENGTH_LONG).show();
     }
 
 }
