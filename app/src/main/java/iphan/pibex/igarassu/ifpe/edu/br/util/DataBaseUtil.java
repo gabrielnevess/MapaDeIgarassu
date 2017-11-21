@@ -13,6 +13,7 @@ import java.util.List;
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
+import iphan.pibex.igarassu.ifpe.edu.br.model.NavigationModeModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.MarkerOther;
 
 public class DataBaseUtil extends ConnectionDataBaseUtil {
@@ -64,7 +65,7 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
 
     public LocationModel getLocation(String searchLocation) {
 
-        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{ searchLocation });
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME, new String[]{searchLocation});
         cursor.moveToNext();
 
         int id = cursor.getColumnIndex(Constants.ID);
@@ -74,12 +75,12 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         int address = cursor.getColumnIndex(Constants.ADDRESS);
         int description = cursor.getColumnIndex(Constants.DESCRIPTION);
 
-        Log.d("id"," "+cursor.getString(id));
-        Log.d("name"," "+cursor.getString(name));
-        Log.d("longitude"," "+cursor.getString(longitude));
-        Log.d("latitude"," "+cursor.getString(latitude));
-        Log.d("address"," "+cursor.getString(address));
-        Log.d("description"," "+cursor.getString(description));
+        Log.d("id", " " + cursor.getString(id));
+        Log.d("name", " " + cursor.getString(name));
+        Log.d("longitude", " " + cursor.getString(longitude));
+        Log.d("latitude", " " + cursor.getString(latitude));
+        Log.d("address", " " + cursor.getString(address));
+        Log.d("description", " " + cursor.getString(description));
 
 
         LocationModel locationModel = new LocationModel();
@@ -93,27 +94,52 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
         return locationModel;
     }
 
+
+    public List<NavigationModeModel> getLocationNavigationMode() {
+
+        cursor = database.rawQuery(Constants.SELECT_ALL, null);
+
+        List<NavigationModeModel> navigationModeModelList = new ArrayList<NavigationModeModel>();
+
+        while (cursor.moveToNext()) {
+
+            int name = cursor.getColumnIndex(Constants.NAME);
+            int longitude = cursor.getColumnIndex(Constants.LONGITUDE);
+            int latitude = cursor.getColumnIndex(Constants.LATITUDE);
+
+            Log.d("name_navigation", " " + cursor.getString(name));
+            Log.d("longitude_navigation", " " + cursor.getString(longitude));
+            Log.d("latitude_navigation", " " + cursor.getString(latitude));
+
+            NavigationModeModel navigationModeModel1 = new NavigationModeModel();
+            navigationModeModel1.setName(cursor.getString(name));
+            navigationModeModel1.setLatitude(Double.parseDouble(cursor.getString(latitude)));
+            navigationModeModel1.setLongitude(Double.parseDouble(cursor.getString(longitude)));
+
+            navigationModeModelList.add(navigationModeModel1);
+        }
+
+        return navigationModeModelList;
+    }
+
     public List<String> searchLocation(String searchLocation) {
 
-        cursor = database.rawQuery(Constants.SELECT_FROM_NAME_LIKE, new String[]{ searchLocation + "%" });
-        GoogleMapsModel.getMap().clear(); /*Limpando o mapa*/
+        cursor = database.rawQuery(Constants.SELECT_FROM_NAME_LIKE, new String[]{searchLocation + "%"});
+        GoogleMapsModel.getMap().clear(); //Limpando o mapa
 
         List<String> locationModels = new ArrayList<>();
 
         while (cursor.moveToNext()) {
 
-//          int id = cursor.getColumnIndex(Constants.ID);
             int name = cursor.getColumnIndex(Constants.NAME);
             int longitude = cursor.getColumnIndex(Constants.LONGITUDE);
             int latitude = cursor.getColumnIndex(Constants.LATITUDE);
 
-            Log.d("name"," "+cursor.getString(name));
-            Log.d("longitude"," "+cursor.getDouble(longitude));
-            Log.d("latitude"," "+cursor.getDouble(latitude));
+            Log.d("name", " " + cursor.getString(name));
+            Log.d("longitude", " " + cursor.getDouble(longitude));
+            Log.d("latitude", " " + cursor.getDouble(latitude));
 
             locationModels.add(0, cursor.getString(name));
-//            locationModels.add(1, cursor.getString(longitude));
-//            locationModels.add(2, cursor.getString(longitude));
 
             MarkerOther.marker(cursor.getString(name), cursor.getDouble(latitude), cursor.getDouble(longitude)); //add marker
 
