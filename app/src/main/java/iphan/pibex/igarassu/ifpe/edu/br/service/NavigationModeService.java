@@ -10,38 +10,51 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import iphan.pibex.igarassu.ifpe.edu.br.model.NavigationModeModel;
+import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
-
-
+import iphan.pibex.igarassu.ifpe.edu.br.util.GeolocationUtil;
 
 
 public class NavigationModeService extends Service {
 
     private Context context;
     public List<Task> tasks = new ArrayList<Task>();
-    public NavigationModeService(Context context) { this.context = context; }
+    public static final String WAKELOCK_NAME = "locationActivityServiceWakeLock";
+    private PowerManager.WakeLock wakeLock;
 
     @Nullable
     @Override
-    public IBinder onBind(Intent intent) { return null; }
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 
     @Override
-    public void onCreate() { super.onCreate(); }
+    public void onCreate() {
+        super.onCreate();
+        this.context = this;
+
+        // configuracao para que o device nao pare de rodar os processos de CPU ao ficar em modo sleep
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_NAME);
+        wakeLock.acquire();
+
+    }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Task task = new Task(this, startId);
-        task.execute();
-        Toast.makeText(getApplicationContext(), "Modo Navegação Iniciado", Toast.LENGTH_LONG).show();
+        Task task = new Task(context, startId);
+        tasks.add(task);
+        task.start();
         return START_REDELIVER_INTENT;
 
     }
@@ -75,95 +88,101 @@ public class NavigationModeService extends Service {
     }
 
 
-    private class Task extends AsyncTask<Void, Void, String> {
+    private class Task extends Thread {
 
         private boolean active = true;
         private int startId;
         private Context context;
         private double longitude;
         private double latitude;
+        private Task task;
         private LocationManager locationManager;
         private LocationListener locationListener;
 
         public Task(Context context, int startId) {
             this.startId = startId;
             this.context = context;
+            this.task = this;
         }
 
-        public double getLongitude() { return longitude; }
-        public void setLongitude(double longitude) { this.longitude = longitude; }
-        public double getLatitude() { return latitude; }
-        public void setLatitude(double latitude) { this.latitude = latitude; }
-
-        private double radian(double rad) {
-            return rad * Math.PI / 180;
+        public double getLongitude() {
+            return longitude;
         }
 
-        private double MetersBetweenTwoPoints(double lat1, double lng1, double lat2, double lng2) {
-            double r = 6378137;
-            double dLat = radian(lat2 - lat1);
-            double dLong = radian(lng2 - lng1);
-            double a = Math.sin(dLat / 2) * Math.sin(dLat) + Math.cos(radian(lat1)) * Math.cos(radian(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
-            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            double d = r * c;
-            return d;
+        public void setLongitude(double longitude) {
+            this.longitude = longitude;
         }
 
+        public double getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(double latitude) {
+            this.latitude = latitude;
+        }
 
         @SuppressLint("MissingPermission")
         private String checkingMetersBetweenTwoPoints() {
 
-            List<NavigationModeModel> list;
-            locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                    locationListener = new LocationGPS(task);
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                }
+            });
+
+            List<LocationModel> list;
             DataBaseUtil dataBaseUtil = new DataBaseUtil(context);
             list = dataBaseUtil.getLocationNavigationMode();
 
-            locationListener = new LocationGPS(this);
-            locationManager.requestLocationUpdates("gps", 1000, 0, locationListener);
 
-
+            String name = " ";
             for (int i = 0; i < list.size(); i++) {
 
-                if (MetersBetweenTwoPoints(getLatitude(), getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude()) == 0) {
-
+                if (GeolocationUtil.getDistance(getLatitude(), getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude(), 'K') <= 5000) {
+                    name = list.get(i).getName();
                 }
             }
 
 
-            return null;
+            return name;
         }
 
-
-        @Override
-        protected String doInBackground(Void... params) {
+        public void run() {
 
             while (active) {
 
                 try {
 
-                    TimeUnit.MINUTES.sleep(2);
+//                    Toast.makeText(getApplicationContext(), "Eu Estou perto de "+checkingMetersBetweenTwoPoints(), Toast.LENGTH_LONG).show();
+                    Log.d("ESTOU PERTO DE", " "+checkingMetersBetweenTwoPoints());
+                    TimeUnit.MINUTES.sleep(1);
+                    locationManager.removeUpdates(locationListener);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
             }
 
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String params) {
-            super.onPostExecute(params);
+            stopSelf(startId);
 
         }
+
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        for (int i = 0, tam = tasks.size(); i < tam; i++) { tasks.get(i).active = false; }
+        wakeLock.release();
+        for (int i = 0, tam = tasks.size(); i < tam; i++) {
+            tasks.get(i).active = false;
+        }
         Toast.makeText(getApplicationContext(), "Modo Navegação Encerrado", Toast.LENGTH_LONG).show();
     }
+
 
 }

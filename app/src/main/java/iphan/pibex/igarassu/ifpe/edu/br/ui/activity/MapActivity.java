@@ -2,6 +2,7 @@ package iphan.pibex.igarassu.ifpe.edu.br.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.ActivityManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +31,9 @@ import com.google.android.gms.maps.model.Marker;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import iphan.pibex.igarassu.ifpe.edu.br.service.NavigationModeService;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.adapter.GoogleInfoWindowAdapter;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.fragments.DialogTypeMapsFragment;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
@@ -39,6 +42,7 @@ import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
+import iphan.pibex.igarassu.ifpe.edu.br.util.GeolocationUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.util.SharedPreferencesUtil;
 
 import static iphan.pibex.igarassu.ifpe.edu.br.R.id.map;
@@ -52,6 +56,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private SearchView searchView;
     private SearchView.SearchAutoComplete mSearchAutoComplete;
     private LocationModel locationModel;
+    private android.os.CountDownTimer gpsProviderListenerTimer;
 
     public MapActivity() {
         this.context = this;
@@ -225,14 +230,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
 
             @Override
-            public boolean onMenuItemActionExpand(MenuItem item) { return true; } //método será chamando quando o menu for expandido
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            } //método será chamando quando o menu for expandido
 
         });
 
         this.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
-            public boolean onQueryTextSubmit(String s) { return false; }
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
 
             @Override
             public boolean onQueryTextChange(String s) {
@@ -255,7 +264,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                         if (valueItemList.equals(locationModel.getName())) { //comparando se o valor achado é igual encontrado no banco ao que está lista
                             GoogleMapsModel.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(locationModel.getLatitude(), locationModel.getLongitude()), 16)); //centralizando mapa para o ponto clicado da lista
+                                    new LatLng(locationModel.getLatitude(), locationModel.getLongitude()), 16)); //centralizando mapa para o ponto clicado da lista
                             searchView.clearFocus(); //escondendo teclado
                         }
 
@@ -269,6 +278,67 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         return true;
 
+    }
+
+    //verificar se a thread(serviço do sms_enviador) está em funcionamento
+    public boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupGpsProviderListener();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        releaseGpsProviderListener();
+    }
+
+    /**
+     * Configura o listener para o provedor de GPS.
+     */
+    public void setupGpsProviderListener() {
+        // checa a cada 1 segundo se o gps esta ligado
+        gpsProviderListenerTimer = new android.os.CountDownTimer(context.getResources().getInteger(R.integer.timeUpdateGpsProviderListener),
+                context.getResources().getInteger(R.integer.timeUpdateGpsProviderListener)) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if (GeolocationUtil.isGPSEnabled(context)) {
+                    if (!isMyServiceRunning(NavigationModeService.class)) {
+                        Toast.makeText(getApplicationContext(), "Modo Navegação Iniciado", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MapActivity.this, NavigationModeService.class);
+                        startService(intent);
+                    }
+                } else {
+                    if (isMyServiceRunning(NavigationModeService.class)) {
+                        Intent intent = new Intent(MapActivity.this, NavigationModeService.class);
+                        stopService(intent);
+                    }
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                this.start();
+            }
+        }.start();
+    }
+
+    /**
+     * Método para liberar os recursos do listener
+     */
+    public void releaseGpsProviderListener() {
+        gpsProviderListenerTimer.cancel();
+        gpsProviderListenerTimer = null;
     }
 
 }

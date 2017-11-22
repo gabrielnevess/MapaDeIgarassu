@@ -13,7 +13,6 @@ import java.util.List;
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.GoogleMapsModel;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
-import iphan.pibex.igarassu.ifpe.edu.br.model.NavigationModeModel;
 import iphan.pibex.igarassu.ifpe.edu.br.ui.other.MarkerOther;
 
 public class DataBaseUtil extends ConnectionDataBaseUtil {
@@ -95,11 +94,11 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
     }
 
 
-    public List<NavigationModeModel> getLocationNavigationMode() {
+    public List<LocationModel> getLocationNavigationMode() {
 
         cursor = database.rawQuery(Constants.SELECT_ALL, null);
 
-        List<NavigationModeModel> navigationModeModelList = new ArrayList<NavigationModeModel>();
+        List<LocationModel> navigationModeModelList = new ArrayList<LocationModel>();
 
         while (cursor.moveToNext()) {
 
@@ -111,12 +110,12 @@ public class DataBaseUtil extends ConnectionDataBaseUtil {
             Log.d("longitude_navigation", " " + cursor.getString(longitude));
             Log.d("latitude_navigation", " " + cursor.getString(latitude));
 
-            NavigationModeModel navigationModeModel1 = new NavigationModeModel();
-            navigationModeModel1.setName(cursor.getString(name));
-            navigationModeModel1.setLatitude(Double.parseDouble(cursor.getString(latitude)));
-            navigationModeModel1.setLongitude(Double.parseDouble(cursor.getString(longitude)));
+            LocationModel locationModel = new LocationModel();
+            locationModel.setName(cursor.getString(name));
+            locationModel.setLatitude(Double.parseDouble(cursor.getString(latitude)));
+            locationModel.setLongitude(Double.parseDouble(cursor.getString(longitude)));
 
-            navigationModeModelList.add(navigationModeModel1);
+            navigationModeModelList.add(locationModel);
         }
 
         return navigationModeModelList;
