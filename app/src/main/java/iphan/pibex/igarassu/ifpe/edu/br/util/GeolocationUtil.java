@@ -6,16 +6,6 @@ import android.location.LocationManager;
 
 public class GeolocationUtil {
 
-
-    private static final double deg2rad(double deg)
-    {
-        return (deg * Math.PI / 180.0);
-    }
-
-    private static final double rad2deg(double rad)
-    {
-        return (rad * 180 / Math.PI);
-    }
     /**
      * Metodo para calcular a distancia entre duas coordenadas.
      * @param latitude1 double Latitude da coordenada 1.
@@ -24,7 +14,7 @@ public class GeolocationUtil {
      * @param longitude2 double Longitude da coordenada 2.
      * @return A distancia entre as duas coordenadas em metros.
      */
-    public static double getDistance(double latitude1, double longitude1, double latitude2, double longitude2, char unit) {
+    public static int getDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
 
 
         if ((latitude1 == latitude2) && (longitude1 == longitude2))
@@ -32,21 +22,8 @@ public class GeolocationUtil {
             return 0;
         }
 
-        double theta = longitude1 - longitude2;
-        double dist = Math.sin(deg2rad(latitude1)) * Math.sin(deg2rad(latitude2)) +
-                Math.cos(deg2rad(latitude1)) * Math.cos(deg2rad(latitude2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
-
-        if (unit == 'K') {
-            dist = dist * 1.609344;
-        }
-        else if (unit == 'N') {
-            dist = dist * 0.8684;
-        }
-
-        return dist;
+        return (int) (6378100 * Math.acos(Math.cos(Math.toRadians(latitude1)) * Math.cos(Math.toRadians(latitude2)) * Math.cos(Math.toRadians(longitude1)
+                        - Math.toRadians(longitude2)) + ((Math.sin(Math.toRadians(latitude1)) * Math.sin(Math.toRadians(latitude2))))));
 
     }
 
