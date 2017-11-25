@@ -68,7 +68,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        //SupportMapFragment ==> Mapa
+        //SupportMapFragment
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
@@ -168,7 +168,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_about) { // Ação para ir a tela de sobre
+        if (id == R.id.nav_about) { //Ação para ir a tela de sobre
             Intent intent = new Intent(MapActivity.this, AboutActivity.class);
             startActivity(intent);
 
