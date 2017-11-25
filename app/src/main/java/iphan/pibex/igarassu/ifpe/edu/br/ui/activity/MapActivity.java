@@ -280,7 +280,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-    //verificar se a thread(serviço do sms_enviador) está em funcionamento
+    //verificar se a thread(serviço do modo navegação) está em funcionamento
     public boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -308,8 +308,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
      */
     public void setupGpsProviderListener() {
         // checa a cada 1 segundo se o gps esta ligado
-        gpsProviderListenerTimer = new android.os.CountDownTimer(context.getResources().getInteger(R.integer.timeUpdateGpsProviderListener),
-                context.getResources().getInteger(R.integer.timeUpdateGpsProviderListener)) {
+        gpsProviderListenerTimer = new android.os.CountDownTimer(Constants.TIME_UPDATE_GPS_PROVIDER_LISTENER,
+                Constants.TIME_UPDATE_GPS_PROVIDER_LISTENER) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if (GeolocationUtil.isGPSEnabled(context)) {

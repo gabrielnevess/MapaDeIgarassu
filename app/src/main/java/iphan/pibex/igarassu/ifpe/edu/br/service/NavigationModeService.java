@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
 import iphan.pibex.igarassu.ifpe.edu.br.util.GeolocationUtil;
@@ -68,8 +69,7 @@ public class NavigationModeService extends Service {
         private boolean active = true;
         private int startId;
         private Context context;
-        private double latitude;
-        private double longitude;
+        private LocationModel locationModel;
         private Location location;
 
         public Task(Context context, int startId) {
@@ -86,26 +86,18 @@ public class NavigationModeService extends Service {
             mGoogleApiClient.connect();
         }
 
-        public double getLatitude() { return latitude; }
-
-        public void setLatitude(double latitude) { this.latitude = latitude; }
-
-        public double getLongitude() { return longitude; }
-
-        public void setLongitude(double longitude) { this.longitude = longitude; }
-
         @Override
         public void onConnectionSuspended(int i) { }
         @Override
         public void onConnectionFailed(@NonNull ConnectionResult connectionResult) { }
 
-        @SuppressLint("MissingPermission")
+        @SuppressLint("MissingPermission") //ignorando permissão em tempo de execução para o gps
         @Override
         public void onConnected(@Nullable Bundle bundle) {
             location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            if(location != null){
-                setLatitude(location.getLatitude());
-                setLongitude(location.getLongitude());
+            if (location != null) {
+                locationModel.setLatitude(location.getLatitude());
+                locationModel.setLongitude(location.getLongitude());
             }
         }
 
@@ -134,10 +126,11 @@ public class NavigationModeService extends Service {
                             String name = " ";
                             for (int i = 0; i < list.size(); i++) {
 
-                                Log.d("Geolocation", " " + GeolocationUtil.getDistance(getLatitude(), getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude()));
+                                if (GeolocationUtil.getDistance(locationModel.getLatitude(), locationModel.getLongitude(),
+                                        list.get(i).getLatitude(), list.get(i).getLongitude()) <= Constants.MINIMUM_DISTANCE) {
 
-                                if ( GeolocationUtil.getDistance(getLatitude(), getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude()) <= 100) {
                                     name = list.get(i).getName();
+
                                 }
 
                             }
@@ -147,12 +140,12 @@ public class NavigationModeService extends Service {
                         @Override
                         protected void onPostExecute(String params) {
                             super.onPostExecute(params);
-                            Toast.makeText(getApplicationContext(), "ESTOU PERTO DE: "+ params, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "ESTOU PERTO DE: " + params, Toast.LENGTH_LONG).show();
                         }
 
                     }.execute();
 
-                    TimeUnit.SECONDS.sleep(10);
+                    TimeUnit.SECONDS.sleep(Constants.UPDATE_TIME);
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -50,6 +50,16 @@ public class Constants {
     //constante SharedPreferences
     public static final String PREF_NAME = "SharedPreferences";
 
+
+    //distância minima para o ponto desejado / usado no modo navegação
+    public static final int MINIMUM_DISTANCE = 200;
+
+    //tempo de atualização no gps
+    public static final int UPDATE_TIME = 10;
+
+    //tempo para verificação de gps ligado
+    public static final int TIME_UPDATE_GPS_PROVIDER_LISTENER = 1000;
+
     //constante center location para o mapa
     public static final LatLng CENTER_LOCATION = new LatLng(-7.834195, -34.906142);
 
