@@ -1,17 +1,24 @@
 package iphan.pibex.igarassu.ifpe.edu.br.service;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -21,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import iphan.pibex.igarassu.ifpe.edu.br.R;
 import iphan.pibex.igarassu.ifpe.edu.br.constants.Constants;
 import iphan.pibex.igarassu.ifpe.edu.br.model.LocationModel;
 import iphan.pibex.igarassu.ifpe.edu.br.util.DataBaseUtil;
@@ -120,6 +128,47 @@ public class NavigationModeService extends Service {
             }
         }
 
+        //metodo de notificação
+        public void notificationMessage(String message){
+
+            //nova notificação
+            android.support.v7.app.NotificationCompat.Builder builder = new
+                    android.support.v7.app.NotificationCompat.Builder(NavigationModeService.this);
+
+            //versão maior igual ao lollipop foto transparente, else menor igual foto normal
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+            } else {
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+            }
+
+            builder.setContentTitle("Aviso");
+            builder.setContentText(message);
+            builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+            builder.setTicker("Aviso");
+
+            NotificationManager notification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            Notification notific = builder.build();
+            //notificação em vibração
+            notific.vibrate = new long[]{150, 300, 150, 600};
+
+            try {
+
+                //ringtone para notificação
+                Uri som = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                Ringtone toque = RingtoneManager.getRingtone(NavigationModeService.this, som);
+                toque.play();
+
+            }catch (Exception e){}
+
+            //auto cancelar notificaçãoes
+            notific.flags = Notification.FLAG_AUTO_CANCEL;
+            //set notification
+            notification.notify(R.mipmap.ic_launcher, notific);
+
+
+        }
+
         @SuppressLint("StaticFieldLeak")
         public void run() {
 
@@ -147,9 +196,8 @@ public class NavigationModeService extends Service {
 
                                 if (GeolocationUtil.getDistance(getLatitude(), getLongitude(),
                                         list.get(i).getLatitude(), list.get(i).getLongitude()) <= Constants.MINIMUM_DISTANCE) {
-
-                                    name = list.get(i).getName();
-
+                                        name = list.get(i).getName();
+                                    //Log.e("PARAMS", "PARAMS: "+ name);
                                 }
                             }
 
@@ -162,7 +210,8 @@ public class NavigationModeService extends Service {
                             super.onPostExecute(params);
 
                             if(!params.trim().isEmpty()) {
-                                Toast.makeText(getApplicationContext(), "ESTOU PERTO DE: " + params, Toast.LENGTH_LONG).show();
+                                Log.e("PARAMS", "PARAMS: "+ params);
+                                notificationMessage("Você está perto do ponto " + params);
                             }
 
                         }
