@@ -95,6 +95,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -119,6 +120,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Botões de Zoom
         GoogleMapsModel.getMap().getUiSettings().setZoomControlsEnabled(true);
+
+        //Botão de minha localização
+        GoogleMapsModel.getMap().setMyLocationEnabled(true);
 
         infoWindow(); //chamada do método infoWindow
 

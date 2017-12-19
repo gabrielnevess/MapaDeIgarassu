@@ -65,7 +65,7 @@ public class NavigationModeService extends Service {
         Task task = new Task(context, startId);
         tasks.add(task);
         task.start();
-        return START_REDELIVER_INTENT;
+        return START_NOT_STICKY;
     }
 
     private class Task extends Thread implements
