@@ -4,9 +4,9 @@
     <group>
 
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_about"
-            android:title="Sobre" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
 
         <item
             android:id="@+id/nav_type_maps"
@@ -17,6 +17,11 @@
             android:id="@+id/nav_check_new_points"
             android:icon="@drawable/ic_menu_check_new_points"
             android:title="Checar se há novos pontos" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_about"
+            android:title="Sobre" />
     </group>
 
 </menu>

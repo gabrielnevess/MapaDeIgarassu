@@ -176,6 +176,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Intent intent = new Intent(MapActivity.this, AboutActivity.class);
             startActivity(intent);
 
+        } else if(id == R.id.nav_home){
+            GoogleMapsModel.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); /*Centro do mapa*/
+
         } else if (id == R.id.nav_type_maps) { // Alert Dialog para escolher o tipo do mapa
             DialogTypeMapsFragment.alertDialog(this);
 
