@@ -57,6 +57,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private SearchView.SearchAutoComplete mSearchAutoComplete;
     private LocationModel locationModel;
     private android.os.CountDownTimer gpsProviderListenerTimer;
+    private ArrayAdapter<String> adapter;
 
     public MapActivity() {
         this.context = this;
@@ -198,15 +199,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-
             drawer.closeDrawer(GravityCompat.START);
 
         } else {
-
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             startActivity(intent);
-
         }
 
     }
@@ -232,7 +230,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 GoogleMapsModel.getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(Constants.CENTER_LOCATION, 16)); //centraliza o mapa com animação
                 InvokeAddMarkerMapOther invokeAddMarkerMapOther = new InvokeAddMarkerMapOther(context); //instância de InvokeAddMarkerMapOther
                 invokeAddMarkerMapOther.onAddMarkerSqlite(); //chamada do metodo onAddMarkerSqlite, isso fará que adicione os pontos
-
                 return true;
             }
 
@@ -255,17 +252,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 Log.d("Escrito", " " + s);
                 final DataBaseUtil dataBaseUtil = new DataBaseUtil(context);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, dataBaseUtil.searchLocation(s));
+                adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, dataBaseUtil.searchLocation(s));
                 mSearchAutoComplete.setAdapter(adapter); //colocando titulos do marcadores na listView
                 dataBaseUtil.searchLocation(s); //pesquisando no banco sqlite pelo nome digitado
 
                 mSearchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                         String valueItemList = (String) adapterView.getItemAtPosition(i); //Pega o valor do item do listView
                         Log.d("mSearchAutoCompleteItem", " " + valueItemList); //Log
-
                         dataBaseUtil.searchLocation(valueItemList); //query no banco sqlite passando o nome clicado da lista
                         locationModel = dataBaseUtil.getLocation(valueItemList); //query no banco sqlite passando o nome clicado da lista, para pegar longitude e latitude do item clicado
 
@@ -277,7 +272,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                     }
                 });
-
                 return false;
             }
 

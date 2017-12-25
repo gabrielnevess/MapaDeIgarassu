@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 
 import agency.tango.materialintroscreen.MaterialIntroActivity;
 import agency.tango.materialintroscreen.SlideFragmentBuilder;
@@ -57,6 +59,13 @@ public class IntroActivity extends MaterialIntroActivity {
             Intent intent = new Intent(IntroActivity.this, MapActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onBackPressed() { //Método de back do botão do celular
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
     }
 
 }
