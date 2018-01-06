@@ -1,0 +1,159 @@
+{
+	"locations": [
+		{
+			"name": "Igreja e Convento Franciscanos de Santo Antônio",
+			"latitude": -7.832511,
+			"longitude": -34.905131,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "Terceiro erguido no Brasil(1588) e o primeiro que tem Santo Antônio como orago. Durante a ocupação holandesa de Igarassu foi usado pelos ministros protestantes. Passou por reformas nos séculos XVII, XVIII e XX. Excelente exemplar da arquitetura barroca brasileira."
+		},
+		{
+			"name": "Secretária de Turismo",
+			"latitude": -7.8337595,
+			"longitude": -34.9054833,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A chamada \"CASA DOS ESCRAVOS\" xestá localizada na antiga Ladeira de São Francisco. A edificação, que data do século XVIII já teve diversos usos. Nela, por exemplo, morou o Pe. Manoel Ignacio Bezerra do Amaral, que ao morrer em 1889, deixou a casa para suas Irmãs Guilhermina e Maria Americana. Estas senhoras, em testamento, deixaram a residência para o casal Manoel Francisco do Nascimento e Albertina Francisca do Nascimento, filhos de ex escravos que cuidaram delas durante toda sua vida."
+		},
+		{
+			"name": "Empresa de Urbanização de Igarassu(URBI)",
+			"latitude": -7.834452,
+			"longitude": -34.905451,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A casa data de fins do século XIX e teve uso residencial. Na década de 80 do século passado foi adquirida pela prefeitura e adaptado para servir de sede da Urbi."
+		},   
+		{
+			"name": "Câmara Municipal",
+			"latitude": -7.835233,
+			"longitude": -34.906164,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": ""
+		},   
+		{
+			"name": "Ruínas da Igreja da Misericórdia",
+			"latitude": -7.8358037,
+			"longitude": -34.9073714,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A igreja da Misericórdia já existia em meados do século XVI. Nela foram celebrados os ritos inquisitoriais na vila de Igarassu."
+		},
+		{
+			"name": "Casa do Artesão",
+			"latitude": -7.834902,
+			"longitude": -34.906872,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": ""
+		},   
+		{
+			"name": "Casa do Patrimônio em Igarassu/Iphan(Sobrado do Imperador)",
+			"latitude": -7.834733,
+			"longitude": -34.906740,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "Foi sede da antiga casa de Correição e Aposentadoria(século XVII), Delegacia de Polícia, Biblioteca, Sede do Museu Histórico e Fórum da Cidade. Nele, em 1859, D. Pedro II almoçou e deu o Beija Mão. Atualmente é a Casa do Patrimônio/IPHAN/Igarassu."
+		},   
+		{
+			"name": "Recolhimento e Igreja do Sagrado Coração de Jesus",
+			"latitude": -7.834387,
+			"longitude": -34.906491,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "O Recolhimento é a casa mãe da ordem feminina do Sagrado Coração de Jesus no Brasil, tendo sido fundado em 1942, pelos padres Miguel Rodrigues Sepúlvida e Gabriel Malagrida. Tem como destaque uma roda usada como meio de comunicação das recolhidas como as pessoas da comunidade."
+		},   
+		{
+			"name": "Museu Histórico",
+			"latitude": -7.834078,
+			"longitude": -34.906410,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": ""
+		},   
+		{
+			"name": "Igreja de São Cosme e São Damião",
+			"latitude": -7.834018,
+			"longitude": -34.906148,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A igreja, que teve sua construção iniciada em 1535, logo após a vitória dos portugueses sobre índios caeté. É considerada como a mais antiga do Brasil em funcionamento. Passou por reformas nos séculos XVIII e XX."
+		},   
+		{
+	
+			"name": "Casa Paroquial",
+			"latitude": -7.833618,
+			"longitude": -34.906010,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "O edifício, provavelmente do século XVII, relembra os velhos sobrados mouriscos e foi residência dos vigários da freguesia dos Santos Cosme e Damião."
+		},   
+		{
+	
+			"name": "CVT - Centro Vocacional Tecnológico",
+			"latitude": -7.833499,
+			"longitude": -34.905951,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": ""
+		},   
+		{
+	
+			"name": "Biblioteca Municipal",
+			"latitude": -7.833318,
+			"longitude": -34.905844,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A construção já existia em meados do século XIX e pertenceu a família do Cel. Francisco Xavier Dias de Albuquerque - Líder político de Igarassu. Na década de 60 do século passado foi desapropriado pelo poder público tendo servido de escola, câmara municipal e fórum."
+		},   
+		{
+	
+			"name": "Loja Maçônica",
+			"latitude": -7.832854,
+			"longitude": -34.906450,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "O edifício data do século XVIII e teve diversas ocupações. Em 1971, a parte superior foi restaurada e adaptada para servir de sede da Oficina Maçônica de Igarassu."
+		},   
+		{
+	
+			"name":"Secretária de Planejamento, Meio Ambiente Patrimônio Histórico(SEPLAMAPH)",
+			"latitude": -7.832889, 
+			"longitude": -34.906573, 
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "A casa data do século XVIII e teve uso residencial. Na década de 70 do século passado foi adquirida pela prefeitura e adaptada para servir de sede da Urbi e depois, Secretária de Planejamento."
+		},
+		                
+		{
+	
+			"name": "Prefeitura Municipal",
+			"latitude": -7.833217,
+			"longitude": -34.906572,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": ""
+		},
+		                
+		{
+	
+			"name": "Igreja de Nossa Senhora do Livramento",
+			"latitude": -7.833169,
+			"longitude": -34.906673,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "Excelente exemplar da arquitetura barroca em Igarassu e que já existia em 1774. A capela passou por várias reformas e era utilizada pelos homens pardos da vila."
+		},
+		                
+		{
+	
+			"name": "Centro de Artes e Cultura",
+			"latitude": -7.832004,
+			"longitude": -34.908098,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "Antigo mercado público construído na década de 40 do século passado. Em 1984, depois de uma restauração foi transformado em Centro de Artes."
+		},
+		                
+		{
+	
+			"name": "Igreja de São Sebastião",
+			"latitude": -7.831667,
+			"longitude": -34.908622,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "Teve sua construção iniciada em 1719 por ordem real. Pertencia ao antigo Senado Municipal, que tinha a obrigação de mantê-la."
+		},
+		                
+		{
+	
+			"name": "Secretária de Obras",
+			"latitude": -7.8316536,
+			"longitude": -34.9091987,
+			"address": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"description": "As edificações datam do século XVIII e tiveram uso residencial e comercial. Na década de 80 do século passado foram adquiridos pela prefeitura e adaptados para servir de sede da Urbi. Atualmente é a sede da Secretária das Cidades."
+		}
+	]
+}
